@@ -1,4 +1,3 @@
-
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 
 const data = [
@@ -14,7 +13,7 @@ const AssetDistribution = () => {
   return (
     <div className="bg-white rounded-xl shadow-sm p-6 animate-slide-in">
       <h3 className="text-lg text-gray-500 mb-4">Asset Distribution</h3>
-      
+
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
@@ -27,19 +26,26 @@ const AssetDistribution = () => {
               fill="#8884d8"
               paddingAngle={5}
               dataKey="value"
-              label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+              label={({ name, percent }) =>
+                `${name} ${(percent * 100).toFixed(0)}%`
+              }
               labelLine={false}
             >
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
               ))}
             </Pie>
-            <Legend 
-              layout="horizontal" 
-              verticalAlign="bottom" 
+            <Legend
+              layout="horizontal"
+              verticalAlign="bottom"
               align="center"
               iconType="circle"
-              formatter={(value) => <span style={{ color: '#444', fontSize: '14px' }}>{value}</span>}
+              formatter={(value) => (
+                <span style={{ color: "#444", fontSize: "14px" }}>{value}</span>
+              )}
             />
           </PieChart>
         </ResponsiveContainer>
