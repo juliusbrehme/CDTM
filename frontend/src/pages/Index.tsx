@@ -8,6 +8,7 @@ import AssetDistribution from "@/components/AssetDistribution";
 import RecentTransactions from "@/components/RecentTransactions";
 import { BarChart, Wallet, PieChart, Bell, X } from "lucide-react";
 import Container from "@/components/Container.tsx";
+import Dashboard from "@/components/Dashboard.tsx";
 
 const Index = () => {
   const [userPrompt, setUserPrompt] = useState("");
@@ -72,95 +73,10 @@ const Index = () => {
               </Button>
             </div>
           </form>
-          <Container />
 
-          {/*Dashboard Content*/}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Portfolio Chart (2/3 width on large screens) */}
-            {showPortfolioChart && (
-              <div className="lg:col-span-2 relative">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="absolute right-2 top-2 z-10 h-8 w-8 bg-white/80 hover:bg-gray-100"
-                  onClick={() => setShowPortfolioChart(false)}
-                >
-                  <X className="h-4 w-4 text-gray-700" />
-                </Button>
-                <PortfolioChart />
-              </div>
-            )}
-
-            {/* Account Balance (1/3 width on large screens) */}
-            <div>
-              <AccountBalance />
-            </div>
-
-            {/* Asset Distribution (1/3 width on large screens) */}
-            {showAssetDistribution && (
-              <div className="relative">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="absolute right-2 top-2 z-10 h-8 w-8 bg-white/80 hover:bg-gray-100"
-                  onClick={() => setShowAssetDistribution(false)}
-                >
-                  <X className="h-4 w-4 text-gray-700" />
-                </Button>
-                <AssetDistribution />
-              </div>
-            )}
-
-            {/* Recent Transactions (2/3 width on large screens) */}
-            {showRecentTransactions && (
-              <div className="lg:col-span-2 relative">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="absolute right-2 top-2 z-10 h-8 w-8 bg-white/80 hover:bg-gray-100"
-                  onClick={() => setShowRecentTransactions(false)}
-                >
-                  <X className="h-4 w-4 text-gray-700" />
-                </Button>
-                <RecentTransactions />
-              </div>
-            )}
-          </div>
-
-          {/* Quick Actions */}
-          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <Button
-              variant="outline"
-              className="p-4 h-auto flex flex-col items-center justify-center border-gray-200 hover:border-traderepublic-purple hover:bg-white"
-            >
-              <Wallet className="h-6 w-6 text-traderepublic-purple mb-2" />
-              <span className="text-sm text-gray-700">Manage Payment</span>
-            </Button>
-
-            <Button
-              variant="outline"
-              className="p-4 h-auto flex flex-col items-center justify-center border-gray-200 hover:border-traderepublic-purple hover:bg-white"
-            >
-              <BarChart className="h-6 w-6 text-traderepublic-purple mb-2" />
-              <span className="text-sm text-gray-700">Performance</span>
-            </Button>
-
-            <Button
-              variant="outline"
-              className="p-4 h-auto flex flex-col items-center justify-center border-gray-200 hover:border-traderepublic-purple hover:bg-white"
-            >
-              <PieChart className="h-6 w-6 text-traderepublic-purple mb-2" />
-              <span className="text-sm text-gray-700">Portfolio</span>
-            </Button>
-
-            <Button
-              variant="outline"
-              className="p-4 h-auto flex flex-col items-center justify-center border-gray-200 hover:border-traderepublic-purple hover:bg-white"
-            >
-              <Bell className="h-6 w-6 text-traderepublic-purple mb-2" />
-              <span className="text-sm text-gray-700">Alerts</span>
-            </Button>
-          </div>
+          <Dashboard>
+            <Container />
+          </Dashboard>
         </div>
       </main>
 
