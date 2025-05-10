@@ -5,3 +5,4 @@ pandas
 uvicorn
 iso18245
 setuptools
+plotly
