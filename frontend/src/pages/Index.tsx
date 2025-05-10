@@ -84,7 +84,7 @@ const Index = () => {
           </form>
           <div>
             <div
-              className={`mb-6 flex-row grid gap-4 ${listContainer.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}
+              className={`mb-6 grid gap-4 ${listContainer.length !== 1 ? "grid-cols-2" : "grid-cols-1"}`}
             >
               {listContainer.map((container, index) => (
                 <React.Fragment>{container}</React.Fragment>
