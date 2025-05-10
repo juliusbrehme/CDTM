@@ -1,0 +1,139 @@
+[
+    {
+        "query": "Give me an overview of my spendings on food this month.",
+        "data": 
+        [
+            {
+                "name": "Fastfood",
+                "color": "#F8C12D",
+                "children": [
+                    { "name": "BurgerKing", "size": 30 },
+                    { "name": "McDonalds", "size": 93 },
+                    { "name": "KFC", "size": 0 },
+                    { "name": "Subway", "size": 36 },
+                    { "name": "Dominos", "size": 23 }
+                ]
+            },
+
+            {
+                "name": "Groceries",
+                "color": "#9597E4",
+                "children": [
+                    { "name": "Aldi", "size": 302 },
+                    { "name": "Lidl", "size": 93 },
+                    { "name": "Rewe", "size": 5 },
+                    { "name": "Edeka", "size": 10 },
+                    { "name": "Netto", "size": 13 }
+                ]
+            },
+
+            {
+                "name": "Restaurants",
+                "color": "#8DC77B",
+                "children": [
+                    { "name": "Vapiano", "size": 12 },
+                    { "name": "Hans im Glueck", "size": 93 },
+                    { "name": "L'Osteria", "size": 52 },
+                    { "name": "Peter Pane", "size": 36 },
+                    { "name": "Block House", "size": 13 }
+                ]
+            },
+
+            {
+                "name": "Snacks",
+                "color": "#A5D297",
+                "children": [
+                    { "name": "Nuts", "size": 2 },
+                    { "name": "Chips", "size": 9 },
+                    { "name": "Chocolate", "size": 5 },
+                    { "name": "Gummibears", "size": 6 },
+                    { "name": "Ice Cream", "size": 7 }
+                ]
+            },
+            {
+                "name": "Beverages",
+                "color": "#E2CF45",
+                "children": [
+                    { "name": "Starbucks", "size": 12 },
+                    { "name": "Ditsch", "size": 93 },
+                    { "name": "Kaffeekommune", "size": 2 },
+                    { "name": "Kaffeekultur", "size": 6 }
+                ]
+            }
+        ]
+    },
+    {
+        "query": "What are my top spendings this month?",
+        "data": 
+        [
+            {
+                "name": "Rent",
+                "color": "#F8C12D",
+                "children": [
+                    { "name": "Apartment", "size": 1200 },
+                    { "name": "House", "size": 1500 }
+                ]
+            },
+
+            {
+                "name": "Utilities",
+                "color": "#9597E4",
+                "children": [
+                    { "name": "Electricity", "size": 200 },
+                    { "name": "Water", "size": 50 },
+                    { "name": "Internet", "size": 30 }
+                ]
+            },
+
+            {
+                "name": "Groceries",
+                "color": "#8DC77B",
+                "children": [
+                    { "name": "Aldi", "size": 300 },
+                    { "name": "Lidl", "size": 200 }
+                ]
+            },
+
+            {
+                "name": "Transportation",
+                "color": "#A5D297",
+                "children": [
+                    { "name": "Public Transport", "size": 50 },
+                    { "name": "Gasoline", "size": 100 }
+                ]
+            }
+        ]
+    },
+    {
+        "query": "How much did I spend on plants and gardening?",
+        "data": 
+        [
+            {
+                "name": "Indoor Plants",
+                "color": "#F8C12D",
+                "children": [
+                    { "name": "Cactus", "size": 50 },
+                    { "name": "Fern", "size": 30 }
+                ]
+            },
+
+            {
+                "name": "Outdoor Plants",
+                "color": "#9597E4",
+                "children": [
+                    { "name": "Rose", "size": 200 },
+                    { "name": "Tulip", "size": 100 }
+                ]
+            },
+
+            {
+                "name": "Gardening Tools",
+                "color": "#8DC77B",
+                "children": [
+                    { "name": "Shovel", "size": 20 },
+                    { "name": "Rake", "size": 10 }
+                ]
+            }
+        ]
+    }
+]

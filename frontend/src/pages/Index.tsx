@@ -6,7 +6,13 @@ import { Bell, PieChart } from "lucide-react";
 import Container from "@/components/Container.tsx";
 import PortfolioChart from "@/components/PortfolioChart.tsx";
 import RecentTransactions from "@/components/RecentTransactions.tsx";
-import VegaChart from "@/components/VegaChart.tsx";
+import RadarChart from "@/components/RadarChart.tsx";
+import { Dendrogram } from "@/components/DendrogramChart";
+import TreeMapChart from "@/components/TreeMapChart";
+
+import RadarJSON from "@/data/test_radar.json";
+import TreeJSON from "@/data/test_tree.json";
+import DendrogramJSON from "@/data/test_dendogram.json";
 
 const Index = () => {
   const [userPrompt, setUserPrompt] = useState("");
@@ -18,38 +24,46 @@ const Index = () => {
     <Container>
       <RecentTransactions />
     </Container>,
-    // <Container>
-    //   <VegaChart spec/>
-    // </Container>,
   ]);
 
-  const handleGenerateVisualization = async (e: React.FormEvent) => {
+  const queries = [
+    "Give me an overview of my spendings on food this month.",
+    "What are my top spendings this month?",
+    "How much did I spend on plants and gardening?",
+    "test"
+  ];
+  const handleGenerateVisualization = (e: React.FormEvent) => {
     e.preventDefault();
-    const spec = await apiRequest(userPrompt);
-    setUserPrompt(() => "");
-    setContainers((prev) => [
-      ...prev,
-      <Container>
-        <VegaChart spec={spec} />
-      </Container>,
-    ]);
-  };
+    if (queries.includes(userPrompt)) {
+      const resultRadar = RadarJSON.find((item) => item.query === userPrompt);
+      const radarTestData = resultRadar?.data;
+      const resultTree = TreeJSON.find((item) => item.query === userPrompt);
+      const treeTestData = resultTree?.data;
 
-  async function apiRequest(prompt: string) {
-    const response = await fetch("http://localhost:8000/api/generate-chart", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userPrompt: prompt }),
-    });
-    console.log(response);
-    if (!response.ok) {
-      console.log("Error");
+      const resultDendrogram = DendrogramJSON.find(
+        (item) => item.query === userPrompt,
+      );
+      const dendrogramTestData = resultDendrogram?.data;
+      setContainers((prev) => [
+        ...prev,
+
+        <Container colSpan="col-span-2">
+          <TreeMapChart data={treeTestData} />
+        </Container>,
+        <Container>
+          <RadarChart data={radarTestData} />
+        </Container>,
+        <Container>
+          <Dendrogram data={dendrogramTestData} />
+        </Container>,
+      ]);
     } else {
-      const data = await response.json();
-      console.log(data);
-      return data;
+      setContainers((prev) => [...prev, <Container prompt={userPrompt} />]);
     }
-  }
+    setUserPrompt(() => "");
+
+    setUserPrompt(() => "");
+  };
 
   const listContainer = containers.map((container) => container);
 
@@ -83,6 +97,7 @@ const Index = () => {
               </Button>
             </div>
           </div>
+
           {/* User Input for Visualization */}
           <form onSubmit={handleGenerateVisualization} className="mb-6">
             <div className="flex gap-2">
