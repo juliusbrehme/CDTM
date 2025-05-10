@@ -3,9 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://juliusbrehme.github.io/CDTM/",
   "scripts": {
     "dev": "vite",
-    "predeploy": "npm run build",
+    "predeploy" : "npm run build",
     "deploy": "gh-pages -d dist",
     "build": "vite build",
     "build:dev": "vite build --mode development",
