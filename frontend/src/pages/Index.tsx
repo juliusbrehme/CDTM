@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
-import { Bell, PieChart } from "lucide-react";
+import { Bell, PieChart, Mic } from "lucide-react";
 import Container from "@/components/Container.tsx";
 import PortfolioChart from "@/components/PortfolioChart.tsx";
 import RecentTransactions from "@/components/RecentTransactions.tsx";
@@ -14,9 +14,20 @@ import RadarJSON from "@/data/test_radar.json";
 import TreeJSON from "@/data/test_tree.json";
 import DendrogramJSON from "@/data/test_dendogram.json";
 
+declare global {
+  interface Window {
+    webkitSpeechRecognition: any;
+  }
+}
+
+const SpeechRecognition = window.webkitSpeechRecognition || (window as any).SpeechRecognition;
+
+
 const Index = () => {
   const [userPrompt, setUserPrompt] = useState("");
-
+  const [isListening, setIsListening] = useState(false); // State to track if voice recognition is active
+  const recognitionRef = useRef<InstanceType<typeof SpeechRecognition> | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null); // Ref to store the timeout for stopping recognition
   const [containers, setContainers] = useState<React.ReactNode[]>([
     <Container>
       <PortfolioChart />
@@ -30,7 +41,6 @@ const Index = () => {
     "Give me an overview of my spendings on food this month.",
     "What are my top spendings this month?",
     "How much did I spend on plants and gardening?",
-    "test"
   ];
   const handleGenerateVisualization = (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,6 +74,76 @@ const Index = () => {
 
     setUserPrompt(() => "");
   };
+
+  ////////////////////
+  useEffect(() => {
+    if ('webkitSpeechRecognition' in window) {
+      const recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = true;
+      recognition.lang = "en-US";
+
+      recognition.onstart = () => {
+        setIsListening(true);
+        console.log("Voice recognition started");
+      };
+
+      recognition.onend = () => {
+        setIsListening(false);
+        console.log("Voice recognition ended");
+      };
+
+      recognition.onerror = (event) => {
+        console.error("Speech recognition error:", event.error);
+        setIsListening(false);
+      };
+
+      recognition.onresult = (event) => {
+        const transcript = Array.from(event.results)
+          .map(result => result[0].transcript)
+          .join("");
+
+        setUserPrompt(transcript);
+
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+        timeoutRef.current = setTimeout(() => {
+          handleGenerateVisualization(new Event("submit") as any);
+        }, 2000);
+      };
+
+      recognitionRef.current = recognition;
+    } else {
+      console.log("Speech recognition not supported");
+    }
+  }, []);
+
+  const startVoiceRecognition = () => {
+    if (recognitionRef.current) {
+      if (!isListening) {
+        recognitionRef.current.start();
+      } else {
+        recognitionRef.current.stop();
+      }
+    }
+  };
+  ////////////////////
+
+  async function apiRequest(prompt: string) {
+    const response = await fetch("http://localhost:8000/api/generate-chart", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userPrompt: prompt }),
+    });
+    console.log(response);
+    if (!response.ok) {
+      console.log("Error");
+    } else {
+      const data = await response.json();
+      console.log(data);
+      return data;
+    }
+  }
 
   const listContainer = containers.map((container) => container);
 
@@ -107,6 +187,15 @@ const Index = () => {
                 onChange={(e) => setUserPrompt(e.target.value)}
                 className="flex-grow border-gray-200 focus:border-traderepublic-purple"
               />
+              <Button
+                type="button"
+                onClick={startVoiceRecognition}
+                className={`bg-gray-200 hover:bg-gray-300 ${
+                  isListening ? "animate-pulse" : ""
+                }`}
+              >
+                <Mic className="h-5 w-5 text-gray-500" />
+              </Button>
               <Button
                 type="submit"
                 className="bg-traderepublic-purple hover:bg-traderepublic-darkpurple"
