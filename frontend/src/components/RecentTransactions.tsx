@@ -39,7 +39,7 @@ const RecentTransactions = () => {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/transactions")
+    fetch("http://localhost:8000/api/transactions2")
       .then((res) => res.json())
       .then((data) => setTransactions(data))
       .catch(console.error);

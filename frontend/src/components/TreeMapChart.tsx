@@ -187,7 +187,8 @@ class CustomizedContent extends PureComponent<CustomizedContentProps> {
     const target = event.currentTarget;
     if (target) {
       target.style.stroke = "black";
-      target.style.strokeWidth = "4px"
+      target.style.strokeWidth = "1px"
+      target.style.strokeOpacity = "1";
     }
     if (tooltip) {
       tooltip.style.opacity = "1";
@@ -248,17 +249,17 @@ class CustomizedContent extends PureComponent<CustomizedContentProps> {
             x={x + width / 2}
             y={y + height / 2 + 7}
             textAnchor="middle"
-            fill="#fff"
+            fill="black"
             fontSize={14}
           >
-            {name}: {size}$
+            {name}
           </text>
         ) : null}
         {depth === 1 ? (
           <text
             x={x + 4}
             y={y + 18}
-            fill="#fff"
+            fill="black"
             fontSize={16}
             fillOpacity={0.9}
           >
