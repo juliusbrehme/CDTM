@@ -64,22 +64,6 @@ const Index = () => {
     setUserPrompt(() => "");
   };
 
-  async function apiRequest(prompt: string) {
-    const response = await fetch("http://localhost:8000/api/generate-chart", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userPrompt: prompt }),
-    });
-    console.log(response);
-    if (!response.ok) {
-      console.log("Error");
-    } else {
-      const data = await response.json();
-      console.log(data);
-      return data;
-    }
-  }
-
   const listContainer = containers.map((container) => container);
 
   return (
