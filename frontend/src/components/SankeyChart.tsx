@@ -129,8 +129,8 @@ const SankeyChart: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-white rounded-2xl shadow-md p-6 animate-fade-in w-full max-w-5xl mx-auto">
-      <h3 className="text-2xl font-semibold text-gray-700 mb-6 text-center">
+    <div className="mb-4 items-center animate-fade-in mx-auto">
+      <h3 className="text-lg text-gray-500">
         Transaction Flow
       </h3>
       <Plot
@@ -161,8 +161,8 @@ const SankeyChart: React.FC = () => {
           },
           height: 700,
           margin: { l: 20, r: 20, t: 20, b: 20 },
-          plot_bgcolor: "#fafafa",
-          paper_bgcolor: "#fafafa",
+          plot_bgcolor: "transparent",
+          paper_bgcolor: "transparent",
         }}
         config={{ responsive: true }}
         style={{ width: "100%" }}

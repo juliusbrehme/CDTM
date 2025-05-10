@@ -13,6 +13,7 @@ import TreeMapChart from "@/components/TreeMapChart";
 import RadarJSON from "@/data/test_radar.json";
 import TreeJSON from "@/data/test_tree.json";
 import DendrogramJSON from "@/data/test_dendogram.json";
+import SankeyChart from "@/components/SankeyChart";
 
 const Index = () => {
   const [userPrompt, setUserPrompt] = useState("");
@@ -24,7 +25,9 @@ const Index = () => {
     <Container>
       <RecentTransactions />
     </Container>,
-  ]);
+    <Container colSpan="col-span-2">
+      <SankeyChart />
+    </Container>  ]);
 
   const queries = [
     "Give me an overview of my spendings on food this month.",
