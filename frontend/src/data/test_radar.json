@@ -1,0 +1,95 @@
+[
+    {
+        "query": "Give me an overview of my spendings on food this month.",
+        "data": [
+            {
+              "subject": "Fastfood",
+              "A": 120,
+              "B": 110,
+              "fullMark": 150
+            },
+            {
+              "subject": "Groceries",
+              "A": 200,
+              "B": 180,
+              "fullMark": 250
+            },
+            {
+              "subject": "Restaurants",
+              "A": 80,
+              "B": 70,
+              "fullMark": 100
+            },
+            {
+              "subject": "Snacks",
+              "A": 50,
+              "B": 40,
+              "fullMark": 60
+            },
+            {
+              "subject": "Beverages",
+              "A": 30,
+              "B": 25,
+              "fullMark": 40
+            }
+        ]
+    },
+    {
+      "query": "What are my top spendings this month?",
+      "data": [
+        {
+          "subject": "Rent",
+          "A": 1200,
+          "B": 1150,
+          "fullMark": 1300
+        },
+        {
+          "subject": "Utilities",
+          "A": 200,
+          "B": 180,
+          "fullMark": 250
+        },
+        {
+          "subject": "Groceries",
+          "A": 300,
+          "B": 280,
+          "fullMark": 350
+        },
+        {
+          "subject": "Transportation",
+          "A": 150,
+          "B": 140,
+          "fullMark": 200
+        },
+        {
+          "subject": "Entertainment",
+          "A": 100,
+          "B": 90,
+          "fullMark": 120
+        }
+      ]
+    },
+    {
+      "query": "How much did I spend on plants and gardening?",
+      "data": [
+        {
+          "subject": "Plants",
+          "A": 50,
+          "B": 45,
+          "fullMark": 60
+        },
+        {
+          "subject": "Gardening Supplies",
+          "A": 30,
+          "B": 25,
+          "fullMark": 40
+        },
+        {
+          "subject": "Outdoor Furniture",
+          "A": 100,
+          "B": 90,
+          "fullMark": 120
+        }
+      ]
+    }
+]

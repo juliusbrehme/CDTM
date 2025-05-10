@@ -1,0 +1,111 @@
+[
+    {
+        "query": "Give me an overview of my spendings on food this month.",
+        "data": {
+                "id": "abcd",
+                "type": "node",
+                "name": "Food spendings",
+                "value": 345,
+                "color": "#F8C12D",
+                "children": [
+                    {
+                        "type": "node",
+                        "name": "Fastfood",
+                        "id": "a1",
+                        "value": 120,
+                        "color": "#9597E4",
+                        "children": [
+                            { "type": "leaf", "name": "McDonald's", "value": 90, "id": "a2", "color": "#8DC77B" },
+                            { "type": "leaf", "name": "Burger King", "value": 30, "id": "a3", "color": "#8DC77B" }
+                        ]
+                    },
+                    {
+                        "type": "node",
+                        "name": "Groceries",
+                        "value": 200,
+                        "id": "a4",
+                        "color": "#9597E4", 
+                        "children": [
+                            { "type": "leaf", "name": "Supermarket", "value": 150, "id": "a5", "color": "#E2CF45" },
+                            { "type": "leaf", "name": "Local Market", "value": 50,  "id": "a6", "color": "#E2CF45" }
+                        ]
+                    },
+                    {
+                        "type": "node",
+                        "name": "Restaurants",
+                        "value": 80,
+                        "id": "a7",
+                        "color": "#9597E4", 
+                        "children": [
+                            { "type": "leaf", "name": "Italian", "value": 50, "id": "a8", "color": "#E2CF45" },
+                            { "type": "leaf", "name": "Chinese", "value": 30,  "id": "a9", "color": "#E2CF45" }
+                        ]
+                    },
+                    {
+                        "type":"node",
+                        "name":"Snacks",
+                        "value": 50,
+                        "id": "a10",
+                        "color": "#9597E4",
+                        "children": [
+                            { "type": "leaf", "name": "Chips", "value": 20, "id": "a11", "color": "#E2CF45" },
+                            { "type": "leaf", "name": "Candy", "value": 30,  "id": "a12", "color": "#E2CF45" }
+                        ]
+                    },
+                    {
+                        "type":"node",
+                        "name":"Beverages",
+                        "value": 30,
+                        "id": "a13",
+                        "color": "#9597E4",
+                        "children": [
+                            { "type": "leaf", "name": "Soda", "value": 15, "id": "a14", "color": "#E2CF45" },
+                            { "type": "leaf", "name": "Juice", "value": 15,  "id": "a15", "color": "#E2CF45" }
+                        ]
+                    }
+                    
+                ]
+            }
+        
+    },
+
+    {
+        "query": "What are my top spendings this month?",
+        "data": {
+            "id": "abcd",
+            "type": "node",
+            "name": "Top Spendings",
+            "value": 345,
+            "color": "#F8C12D",
+            "children": [
+                { "type": "leaf", "name": "Rent", "value": 1200, "id": "a1", "color": "#9597E4" },
+                { "type": "leaf", "name": "Groceries", "value": 200, "id": "a2", "color": "#8DC77B" },
+                { "type": "leaf", "name": "Utilities", "value": 150,  "id": "a3", "color": "#E2CF45" },
+                { "type": "leaf", "name": "Transportation", "value": 100, "id": "a4", "color": "#EE8h76" },
+                { "type": "leaf", "name": "Entertainment", "value": 80,  "id": "a5", "color": "#09d845" },
+                { "type": "leaf", "name": "Dining Out", "value": 50,  "id": "a6", "color": "#121212" },
+                { "type": "leaf", "name": "Shopping", "value": 200,  "id": "a7", "color": "#E45J99" },
+                { "type": "leaf", "name": "Health & Fitness", "value": 70,  "id": "a8", "color": "#E0K812" },
+                { "type": "leaf", "name": "Miscellaneous", "value": 30,  "id": "a9", "color": "#F8C12D" }
+            ]
+        }
+    },
+    {
+        "query": "How much did I spend on plants and gardening?",
+        "data": {
+            "id": "abcd",
+            "type": "node",
+            "name": "Plants & Gardening",
+            "value": 345,
+            "color": "#F8C12D",
+            "children": [
+                { "type": "leaf", "name": "Indoor Plants", "value": 120, "id": "a1", "color": "#9597E4" },
+                { "type": "leaf", "name": "Outdoor Plants", "value": 200, "id": "a2", "color": "#8DC77B" },
+                { "type": "leaf", "name": "Gardening Tools", "value": 50,  "id": "a3", "color": "#E2CF45" }
+            ]
+        }
+    }
+        
+    
+    
+]

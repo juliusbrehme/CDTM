@@ -22,7 +22,7 @@ export type TreeNode = {
 
   const COLORS = ['#8889DD', '#9597E4', '#8DC77B', '#A5D297', '#E2CF45', '#F8C12D'];
   
-  export const data: Tree = {
+  export const dataT: Tree = {
     id: "a0",
     type: "node",
     name: "APRIL 25",
@@ -74,10 +74,10 @@ const MARGIN = { top: 35, right: 10, bottom: 10, left: 35 };
 type DendrogramProps = {
   width?: number;
   height?: number;
-  data: Tree;
+  data?: Tree;
 };
 
-export const Dendrogram = ({ width, height, data }: DendrogramProps) => {
+export const Dendrogram = ({ width = 450, height= 550, data = dataT }: DendrogramProps) => {
   const boundsWidth = width - MARGIN.right - MARGIN.left;
   const boundsHeight = height - MARGIN.top - MARGIN.bottom;
 
@@ -163,18 +163,28 @@ export const Dendrogram = ({ width, height, data }: DendrogramProps) => {
       return;
     }
     return (
+      <g key={node.data.id}>
       <path
         key={node.id}
         fill="none"
         stroke="grey"
-        textDecoration={"test"}
-        textAnchor="test"
         d={horizontalLinkGenerator({
           source: [node.parent.y, node.parent.x],
           target: [node.y, node.x],
         })}
       />
-      
+      {true && (
+        <text
+          x={(node.parent.y + node.y) / 2}
+          y={(node.parent.x + node.x) / 2 - 10}
+          fontSize={12}
+          textAnchor="middle"
+          alignmentBaseline="middle"
+          fill="grey">
+          {node.data.value}$
+        </text>
+      )}
+      </g>
     );
   });
 
@@ -185,8 +195,8 @@ export const Dendrogram = ({ width, height, data }: DendrogramProps) => {
 
 
   return (
-    <div className="bg-white rounded-xl shadow-sm p-6 animate-fade-in">
-      <div className="mb-4 items-center"> 
+    
+    <div className="mb-4 items-center"> 
           <h3 className="text-lg text-gray-500">Dendogram Chart</h3>
         
 
@@ -203,6 +213,6 @@ export const Dendrogram = ({ width, height, data }: DendrogramProps) => {
             <span id="div_template"></span>
         </div>
     
-    </div>
+    
   );
 };

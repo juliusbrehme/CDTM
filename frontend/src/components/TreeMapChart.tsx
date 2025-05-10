@@ -2,9 +2,10 @@
 import React, { PureComponent } from 'react';
 import { Treemap, ResponsiveContainer } from 'recharts';
 
-const data = [
+const data2 = [
   {
     name: 'axis',
+
     children: [
       { name: 'Axes', size: 1302 },
       { name: 'Axis', size: 24593 },
@@ -135,7 +136,12 @@ const data = [
   },
 ];
 
-const COLORS = ['#8889DD', '#9597E4', '#8DC77B', '#A5D297', '#E2CF45', '#F8C12D'];
+type TreeData = {
+  name: string;
+  children: TreeData[];
+  size?: number;
+  color?: string;
+}
 
 interface CustomizedContentProps {
   root?: any;
@@ -146,14 +152,22 @@ interface CustomizedContentProps {
   height?: number;
   index?: number;
   payload?: any;
-  colors?: string[];
+  color?: string;
   rank?: number;
   name?: string;
+  size?: number;
 }
+
+interface TreeMapChartProps {
+  data?: TreeData[];
+}
+
+const COLORS = ['#8889DD', '#9597E4', '#8DC77B', '#A5D297', '#E2CF45', '#F8C12D', '#3C3E3F','#a451e3','#f8c12d','#3c3e3f','#8889dd','#9597e4','#8dc77b','#a5d297','#e2cf45','#f8c12d'];
 
 class CustomizedContent extends PureComponent<CustomizedContentProps> {
   render() {
-    const { root, depth, x, y, width, height, index, payload, colors, rank, name } = this.props;
+    const { root, depth, x, y, width, height, index, payload, color, rank, name, size } = this.props;
+    
 
     return (
       <g>
@@ -163,15 +177,15 @@ class CustomizedContent extends PureComponent<CustomizedContentProps> {
           width={width}
           height={height}
           style={{
-            fill: depth < 2 ? colors[Math.floor((index / root.children.length) * 6)] : '#ffffff00',
+            fill: depth < 2 ? COLORS[Math.floor((index / root.children.length) * 6)] : color ,
             stroke: '#fff',
             strokeWidth: 2 / (depth + 1e-10),
             strokeOpacity: 1 / (depth + 1e-10),
           }}
         />
-        {depth === 1 ? (
+        {depth !== 1 ? (
           <text x={x + width / 2} y={y + height / 2 + 7} textAnchor="middle" fill="#fff" fontSize={14}>
-            {name}
+            {name}: {size}$
           </text>
         ) : null}
         {depth === 1 ? (
@@ -184,21 +198,46 @@ class CustomizedContent extends PureComponent<CustomizedContentProps> {
   }
 }
 
-export default class TreeMapChart extends PureComponent {
+export default class TreeMapChart extends PureComponent<TreeMapChartProps> {
 
   render() {
+    const data = this.props.data || data2;
+    console.log("TreeMap data", data);
     return (
-      <ResponsiveContainer width="100%" height="100%">
-        <Treemap
-          width={400}
-          height={200}
-          data={data}
-          dataKey="size"
-          stroke="#fff"
-          fill="#8884d8"
-          content={<CustomizedContent colors={COLORS} />}
-        />
-      </ResponsiveContainer>
+      <div className="bg-white rounded-xl shadow-sm p-6 animate-fade-in">
+            <div className="flex justify-between items-start mb-4">
+              <div>
+                <h3 className="text-lg text-gray-500">TreeMap Chart</h3>
+                <p className="text-3xl font-bold">
+                  
+                </p>
+                <div
+                  className={`flex items-center mt-1 ${true ? "text-traderepublic-green" : "text-traderepublic-red"}`}
+                >
+                  <span className="font-medium">
+                    
+                  </span>
+                  <span className="ml-2">
+                    
+                  </span>
+                </div>
+              </div>
+            </div>
+      
+            <div className="h-64 mt-6">
+            <ResponsiveContainer width="100%" height="100%">
+              <Treemap
+                width={400} // Replace with a numeric value or a dynamic calculation
+                height={400} // Replace with a numeric value or a dynamic calculation
+                data={data}
+                dataKey="size"
+                fill="transparent"
+                stroke="#fff"
+                content={<CustomizedContent depth={2} />}
+              />
+            </ResponsiveContainer>
+            </div>
+          </div>
     );
   }
 }

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
-const data = [
+const data2 = [
   {
     subject: 'Food',
     A: 120,
@@ -40,9 +40,22 @@ const data = [
   },
 ];
 
-export default class RadarChartContainer extends PureComponent {
+type RadarChartData = {
+  subject: string,
+  A: number,
+  B: number,
+  fullMark: number,
+};
 
+interface RadarChartProps  {
+  data?: RadarChartData[];
+};
+
+
+
+export default class RadarChartContainer extends PureComponent<RadarChartProps> {
   render() {
+    const data = this.props.data || data2;
     return (
     <div className="bg-white rounded-xl shadow-sm p-6 animate-fade-in">
       <div className="flex justify-between items-start mb-4">
@@ -78,4 +91,3 @@ export default class RadarChartContainer extends PureComponent {
     );
   }
 }
-
