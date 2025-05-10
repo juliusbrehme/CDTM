@@ -3,3 +3,5 @@ openai
 dotenv
 pandas
 uvicorn
+iso18245
+setuptools

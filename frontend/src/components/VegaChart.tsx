@@ -5,11 +5,11 @@ interface Props {
   spec: VisualizationSpec;
 }
 
-export default function VegaChart() {
+export default function VegaChart({ spec }: Props) {
   const chartRef = useRef();
 
   useEffect(() => {
-    vegaEmbed(chartRef.current, sampleSpec);
+    vegaEmbed(chartRef.current, spec);
   }, []);
 
   return <div ref={chartRef} />;

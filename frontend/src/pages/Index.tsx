@@ -1,10 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
-import { PieChart, Bell } from "lucide-react";
+import { Bell, PieChart } from "lucide-react";
 import Container from "@/components/Container.tsx";
-import React from "react";
 import PortfolioChart from "@/components/PortfolioChart.tsx";
 import RecentTransactions from "@/components/RecentTransactions.tsx";
 import VegaChart from "@/components/VegaChart.tsx";
@@ -19,21 +18,38 @@ const Index = () => {
     <Container>
       <RecentTransactions />
     </Container>,
-    <Container>
-      <VegaChart />
-    </Container>,
+    // <Container>
+    //   <VegaChart spec/>
+    // </Container>,
   ]);
 
   const handleGenerateVisualization = async (e: React.FormEvent) => {
     e.preventDefault();
+    const spec = await apiRequest(userPrompt);
     setUserPrompt(() => "");
     setContainers((prev) => [
       ...prev,
       <Container>
-        <div>Hello World</div>
+        <VegaChart spec={spec} />
       </Container>,
     ]);
   };
+
+  async function apiRequest(prompt: string) {
+    const response = await fetch("http://localhost:8000/api/generate-chart", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userPrompt: prompt }),
+    });
+    console.log(response);
+    if (!response.ok) {
+      console.log("Error");
+    } else {
+      const data = await response.json();
+      console.log(data);
+      return data;
+    }
+  }
 
   const listContainer = containers.map((container) => container);
 
@@ -90,7 +106,7 @@ const Index = () => {
               className={`mb-6 grid gap-4 ${listContainer.length !== 1 ? "grid-cols-2" : "grid-cols-1"}`}
             >
               {listContainer.map((container, index) => (
-                <React.Fragment>{container}</React.Fragment>
+                <React.Fragment key={index}>{container}</React.Fragment>
               ))}
             </div>
           </div>

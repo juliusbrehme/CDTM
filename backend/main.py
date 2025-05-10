@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 import iso18245
@@ -7,7 +7,6 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv
 import json
-import re
 
 app = FastAPI()
 
@@ -49,7 +48,6 @@ async def root():
     return {"message": "Hello World!"}
 
 
-
 load_dotenv()
 myApi_key = os.getenv("OPENAI_API_KEY")
 class Prompt(BaseModel):
@@ -78,51 +76,17 @@ User prompt: "{prompt.userPrompt}"
         ]
     )
 
-    # chart_spec=response.choices[0].message.content
-    # chart_spec["data"] = {"values": read_transactions()}
-    # print(chart_spec)
+    chart_spec_str = response.choices[0].message.content
 
-    chart_spec_str = response.choices[0].message.content # still a string
-    print(chart_spec_str)
-    # chart_spec = json.loads(chart_spec_str)  # now it's a dict ✅
-
-
-    # # Remove comments or anything that is not part of the JSON
-    # chart_spec_str = chart_spec_str.split("\n")[0]  # if it's on one line
-    # # Or strip out the comment entirely if it's in the middle of the string:
-    # chart_spec_str = chart_spec_str.split("#")[0]  # split out comment part
-
-    # Now, try parsing again
     try:
         chart_spec = json.loads(chart_spec_str)
         chart_spec["data"] = {"values": read_transactions()} 
         print(json.dumps(chart_spec, indent=2))
-        # print(re.sub(r"(?<=\w)'(?=\w)", '"', str(chart_spec)).replace("'", '"'))
 
     except json.JSONDecodeError as e:
         print("Failed to parse JSON. Response:", chart_spec_str)
         raise e
         
     return chart_spec
-
-#     try:
-#         response = openai.ChatCompletion.create(
-#             model="gpt-4",
-#             messages=[
-#                 {"role": "system", "content": system_prompt},
-#                 {"role": "user", "content": prompt.userPrompt}
-#             ],
-#             temperature=0.2
-#         )
-#         chart_spec = response.choices[0].message["content"]
-#         print(chart_spec)
-#         return { "spec": chart_spec }
-#     except openai.OpenAIError as e:
-#       print(f"OpenAI API error: {e}")
-#     except Exception as e:
-#         print(f"General error: {e}")
-    # except Exception as e:
-    #     print("error")
-    #     return { "error": str(e) }
 
 
