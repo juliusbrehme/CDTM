@@ -6,7 +6,6 @@ import { Bell, PieChart } from "lucide-react";
 import Container from "@/components/Container.tsx";
 import PortfolioChart from "@/components/PortfolioChart.tsx";
 import RecentTransactions from "@/components/RecentTransactions.tsx";
-import AssetDistribution from "@/components/AssetDistribution.tsx";
 import RadarChart from "@/components/RadarChart.tsx";
 import { Dendrogram } from "@/components/DendrogramChart";
 import TreeMapChart from "@/components/TreeMapChart";
@@ -35,27 +34,26 @@ const Index = () => {
   const handleGenerateVisualization = (e: React.FormEvent) => {
     e.preventDefault();
     if (queries.includes(userPrompt)) {
-      const result_radar = RadarJSON.find((item) => item.query === userPrompt);
-      const radar_testData = result_radar?.data;
+      const resultRadar = RadarJSON.find((item) => item.query === userPrompt);
+      const radarTestData = resultRadar?.data;
+      const resultTree = TreeJSON.find((item) => item.query === userPrompt);
+      const treeTestData = resultTree?.data;
 
-      const result_tree = TreeJSON.find((item) => item.query === userPrompt);
-      const tree_testData = result_tree?.data;
-
-      const result_dendrogram = DendrogramJSON.find(
+      const resultDendrogram = DendrogramJSON.find(
         (item) => item.query === userPrompt,
       );
-      const dendrogram_testData = result_dendrogram?.data;
+      const dendrogramTestData = resultDendrogram?.data;
       setContainers((prev) => [
         ...prev,
 
         <Container colSpan="col-span-2">
-          <TreeMapChart data={tree_testData} />
+          <TreeMapChart data={treeTestData} />
         </Container>,
         <Container>
-          <RadarChart data={radar_testData} />
+          <RadarChart data={radarTestData} />
         </Container>,
         <Container>
-          <Dendrogram data={dendrogram_testData} />
+          <Dendrogram data={dendrogramTestData} />
         </Container>,
       ]);
     } else {

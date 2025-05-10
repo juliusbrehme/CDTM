@@ -1,137 +1,137 @@
 /* eslint-disable max-classes-per-file */
-import React, { PureComponent } from 'react';
-import { Treemap, ResponsiveContainer } from 'recharts';
+import React, { PureComponent } from "react";
+import { Treemap, ResponsiveContainer } from "recharts";
 
 const data2 = [
   {
-    name: 'axis',
+    name: "axis",
 
     children: [
-      { name: 'Axes', size: 1302 },
-      { name: 'Axis', size: 24593 },
-      { name: 'AxisGridLine', size: 652 },
-      { name: 'AxisLabel', size: 636 },
-      { name: 'CartesianAxes', size: 6703 },
+      { name: "Axes", size: 1302 },
+      { name: "Axis", size: 24593 },
+      { name: "AxisGridLine", size: 652 },
+      { name: "AxisLabel", size: 636 },
+      { name: "CartesianAxes", size: 6703 },
     ],
   },
   {
-    name: 'controls',
+    name: "controls",
     children: [
-      { name: 'AnchorControl', size: 2138 },
-      { name: 'ClickControl', size: 3824 },
-      { name: 'Control', size: 1353 },
-      { name: 'ControlList', size: 4665 },
-      { name: 'DragControl', size: 2649 },
-      { name: 'ExpandControl', size: 2832 },
-      { name: 'HoverControl', size: 4896 },
-      { name: 'IControl', size: 763 },
-      { name: 'PanZoomControl', size: 5222 },
-      { name: 'SelectionControl', size: 7862 },
-      { name: 'TooltipControl', size: 8435 },
+      { name: "AnchorControl", size: 2138 },
+      { name: "ClickControl", size: 3824 },
+      { name: "Control", size: 1353 },
+      { name: "ControlList", size: 4665 },
+      { name: "DragControl", size: 2649 },
+      { name: "ExpandControl", size: 2832 },
+      { name: "HoverControl", size: 4896 },
+      { name: "IControl", size: 763 },
+      { name: "PanZoomControl", size: 5222 },
+      { name: "SelectionControl", size: 7862 },
+      { name: "TooltipControl", size: 8435 },
     ],
   },
   {
-    name: 'data',
+    name: "data",
     children: [
-      { name: 'Data', size: 20544 },
-      { name: 'DataList', size: 19788 },
-      { name: 'DataSprite', size: 10349 },
-      { name: 'EdgeSprite', size: 3301 },
-      { name: 'NodeSprite', size: 19382 },
+      { name: "Data", size: 20544 },
+      { name: "DataList", size: 19788 },
+      { name: "DataSprite", size: 10349 },
+      { name: "EdgeSprite", size: 3301 },
+      { name: "NodeSprite", size: 19382 },
       {
-        name: 'render',
+        name: "render",
         children: [
-          { name: 'ArrowType', size: 698 },
-          { name: 'EdgeRenderer', size: 5569 },
-          { name: 'IRenderer', size: 353 },
-          { name: 'ShapeRenderer', size: 2247 },
+          { name: "ArrowType", size: 698 },
+          { name: "EdgeRenderer", size: 5569 },
+          { name: "IRenderer", size: 353 },
+          { name: "ShapeRenderer", size: 2247 },
         ],
       },
-      { name: 'ScaleBinding', size: 11275 },
-      { name: 'Tree', size: 7147 },
-      { name: 'TreeBuilder', size: 9930 },
+      { name: "ScaleBinding", size: 11275 },
+      { name: "Tree", size: 7147 },
+      { name: "TreeBuilder", size: 9930 },
     ],
   },
   {
-    name: 'events',
+    name: "events",
     children: [
-      { name: 'DataEvent', size: 7313 },
-      { name: 'SelectionEvent', size: 6880 },
-      { name: 'TooltipEvent', size: 3701 },
-      { name: 'VisualizationEvent', size: 2117 },
+      { name: "DataEvent", size: 7313 },
+      { name: "SelectionEvent", size: 6880 },
+      { name: "TooltipEvent", size: 3701 },
+      { name: "VisualizationEvent", size: 2117 },
     ],
   },
   {
-    name: 'legend',
+    name: "legend",
     children: [
-      { name: 'Legend', size: 20859 },
-      { name: 'LegendItem', size: 4614 },
-      { name: 'LegendRange', size: 10530 },
+      { name: "Legend", size: 20859 },
+      { name: "LegendItem", size: 4614 },
+      { name: "LegendRange", size: 10530 },
     ],
   },
   {
-    name: 'operator',
+    name: "operator",
     children: [
       {
-        name: 'distortion',
+        name: "distortion",
         children: [
-          { name: 'BifocalDistortion', size: 4461 },
-          { name: 'Distortion', size: 6314 },
-          { name: 'FisheyeDistortion', size: 3444 },
+          { name: "BifocalDistortion", size: 4461 },
+          { name: "Distortion", size: 6314 },
+          { name: "FisheyeDistortion", size: 3444 },
         ],
       },
       {
-        name: 'encoder',
+        name: "encoder",
         children: [
-          { name: 'ColorEncoder', size: 3179 },
-          { name: 'Encoder', size: 4060 },
-          { name: 'PropertyEncoder', size: 4138 },
-          { name: 'ShapeEncoder', size: 1690 },
-          { name: 'SizeEncoder', size: 1830 },
+          { name: "ColorEncoder", size: 3179 },
+          { name: "Encoder", size: 4060 },
+          { name: "PropertyEncoder", size: 4138 },
+          { name: "ShapeEncoder", size: 1690 },
+          { name: "SizeEncoder", size: 1830 },
         ],
       },
       {
-        name: 'filter',
+        name: "filter",
         children: [
-          { name: 'FisheyeTreeFilter', size: 5219 },
-          { name: 'GraphDistanceFilter', size: 3165 },
-          { name: 'VisibilityFilter', size: 3509 },
+          { name: "FisheyeTreeFilter", size: 5219 },
+          { name: "GraphDistanceFilter", size: 3165 },
+          { name: "VisibilityFilter", size: 3509 },
         ],
       },
-      { name: 'IOperator', size: 1286 },
+      { name: "IOperator", size: 1286 },
       {
-        name: 'label',
+        name: "label",
         children: [
-          { name: 'Labeler', size: 9956 },
-          { name: 'RadialLabeler', size: 3899 },
-          { name: 'StackedAreaLabeler', size: 3202 },
+          { name: "Labeler", size: 9956 },
+          { name: "RadialLabeler", size: 3899 },
+          { name: "StackedAreaLabeler", size: 3202 },
         ],
       },
       {
-        name: 'layout',
+        name: "layout",
         children: [
-          { name: 'AxisLayout', size: 6725 },
-          { name: 'BundledEdgeRouter', size: 3727 },
-          { name: 'CircleLayout', size: 9317 },
-          { name: 'CirclePackingLayout', size: 12003 },
-          { name: 'DendrogramLayout', size: 4853 },
-          { name: 'ForceDirectedLayout', size: 8411 },
-          { name: 'IcicleTreeLayout', size: 4864 },
-          { name: 'IndentedTreeLayout', size: 3174 },
-          { name: 'Layout', size: 7881 },
-          { name: 'NodeLinkTreeLayout', size: 12870 },
-          { name: 'PieLayout', size: 2728 },
-          { name: 'RadialTreeLayout', size: 12348 },
-          { name: 'RandomLayout', size: 870 },
-          { name: 'StackedAreaLayout', size: 9121 },
-          { name: 'TreeMapLayout', size: 9191 },
+          { name: "AxisLayout", size: 6725 },
+          { name: "BundledEdgeRouter", size: 3727 },
+          { name: "CircleLayout", size: 9317 },
+          { name: "CirclePackingLayout", size: 12003 },
+          { name: "DendrogramLayout", size: 4853 },
+          { name: "ForceDirectedLayout", size: 8411 },
+          { name: "IcicleTreeLayout", size: 4864 },
+          { name: "IndentedTreeLayout", size: 3174 },
+          { name: "Layout", size: 7881 },
+          { name: "NodeLinkTreeLayout", size: 12870 },
+          { name: "PieLayout", size: 2728 },
+          { name: "RadialTreeLayout", size: 12348 },
+          { name: "RandomLayout", size: 870 },
+          { name: "StackedAreaLayout", size: 9121 },
+          { name: "TreeMapLayout", size: 9191 },
         ],
       },
-      { name: 'Operator', size: 2490 },
-      { name: 'OperatorList', size: 5248 },
-      { name: 'OperatorSequence', size: 4190 },
-      { name: 'OperatorSwitch', size: 2581 },
-      { name: 'SortOperator', size: 2023 },
+      { name: "Operator", size: 2490 },
+      { name: "OperatorList", size: 5248 },
+      { name: "OperatorSequence", size: 4190 },
+      { name: "OperatorSwitch", size: 2581 },
+      { name: "SortOperator", size: 2023 },
     ],
   },
 ];
@@ -141,7 +141,7 @@ type TreeData = {
   children: TreeData[];
   size?: number;
   color?: string;
-}
+};
 
 interface CustomizedContentProps {
   root?: any;
@@ -162,12 +162,41 @@ interface TreeMapChartProps {
   data?: TreeData[];
 }
 
-const COLORS = ['#8889DD', '#9597E4', '#8DC77B', '#A5D297', '#E2CF45', '#F8C12D', '#3C3E3F','#a451e3','#f8c12d','#3c3e3f','#8889dd','#9597e4','#8dc77b','#a5d297','#e2cf45','#f8c12d'];
+const COLORS = [
+  "#8889DD",
+  "#9597E4",
+  "#8DC77B",
+  "#A5D297",
+  "#E2CF45",
+  "#F8C12D",
+  "#3C3E3F",
+  "#a451e3",
+  "#f8c12d",
+  "#3c3e3f",
+  "#8889dd",
+  "#9597e4",
+  "#8dc77b",
+  "#a5d297",
+  "#e2cf45",
+  "#f8c12d",
+];
 
 class CustomizedContent extends PureComponent<CustomizedContentProps> {
   render() {
-    const { root, depth, x, y, width, height, index, payload, color, rank, name, size } = this.props;
-    
+    const {
+      root,
+      depth,
+      x,
+      y,
+      width,
+      height,
+      index,
+      payload,
+      color,
+      rank,
+      name,
+      size,
+    } = this.props;
 
     return (
       <g>
@@ -177,19 +206,34 @@ class CustomizedContent extends PureComponent<CustomizedContentProps> {
           width={width}
           height={height}
           style={{
-            fill: depth < 2 ? COLORS[Math.floor((index / root.children.length) * 6)] : color ,
-            stroke: '#fff',
+            fill:
+              depth < 2
+                ? COLORS[Math.floor((index / root.children.length) * 6)]
+                : color,
+            stroke: "#fff",
             strokeWidth: 2 / (depth + 1e-10),
             strokeOpacity: 1 / (depth + 1e-10),
           }}
         />
         {depth !== 1 ? (
-          <text x={x + width / 2} y={y + height / 2 + 7} textAnchor="middle" fill="#fff" fontSize={14}>
+          <text
+            x={x + width / 2}
+            y={y + height / 2 + 7}
+            textAnchor="middle"
+            fill="#fff"
+            fontSize={14}
+          >
             {name}: {size}$
           </text>
         ) : null}
         {depth === 1 ? (
-          <text x={x + 4} y={y + 18} fill="#fff" fontSize={16} fillOpacity={0.9}>
+          <text
+            x={x + 4}
+            y={y + 18}
+            fill="#fff"
+            fontSize={16}
+            fillOpacity={0.9}
+          >
             {index + 1}
           </text>
         ) : null}
@@ -199,45 +243,38 @@ class CustomizedContent extends PureComponent<CustomizedContentProps> {
 }
 
 export default class TreeMapChart extends PureComponent<TreeMapChartProps> {
-
   render() {
     const data = this.props.data || data2;
     console.log("TreeMap data", data);
     return (
       <div className="bg-white rounded-xl shadow-sm p-6 animate-fade-in">
-            <div className="flex justify-between items-start mb-4">
-              <div>
-                <h3 className="text-lg text-gray-500">TreeMap Chart</h3>
-                <p className="text-3xl font-bold">
-                  
-                </p>
-                <div
-                  className={`flex items-center mt-1 ${true ? "text-traderepublic-green" : "text-traderepublic-red"}`}
-                >
-                  <span className="font-medium">
-                    
-                  </span>
-                  <span className="ml-2">
-                    
-                  </span>
-                </div>
-              </div>
-            </div>
-      
-            <div className="h-64 mt-6">
-            <ResponsiveContainer width="100%" height="100%">
-              <Treemap
-                width={400} // Replace with a numeric value or a dynamic calculation
-                height={400} // Replace with a numeric value or a dynamic calculation
-                data={data}
-                dataKey="size"
-                fill="transparent"
-                stroke="#fff"
-                content={<CustomizedContent depth={2} />}
-              />
-            </ResponsiveContainer>
+        <div className="flex justify-between items-start mb-4">
+          <div>
+            <h3 className="text-lg text-gray-500">TreeMap Chart</h3>
+            <p className="text-3xl font-bold"></p>
+            <div
+              className={`flex items-center mt-1 ${true ? "text-traderepublic-green" : "text-traderepublic-red"}`}
+            >
+              <span className="font-medium"></span>
+              <span className="ml-2"></span>
             </div>
           </div>
+        </div>
+
+        <div className="h-64 mt-6">
+          <ResponsiveContainer width="100%" height="100%">
+            <Treemap
+              width={400} // Replace with a numeric value or a dynamic calculation
+              height={400} // Replace with a numeric value or a dynamic calculation
+              data={data}
+              dataKey="size"
+              fill="transparent"
+              stroke="#fff"
+              content={<CustomizedContent depth={2} />}
+            />
+          </ResponsiveContainer>
+        </div>
+      </div>
     );
   }
 }
