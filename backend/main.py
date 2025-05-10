@@ -67,7 +67,7 @@ Respond ONLY with valid Vega-Lite JSON. No explanation and make sure it's JSON p
 
 User prompt: "{prompt.userPrompt}"
     """
-    client = OpenAI(api_key=myApi_key)
+    client = OpenAI(api_key="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")
 
     response = client.chat.completions.create(
         model="gpt-4",

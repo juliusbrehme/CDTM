@@ -6,7 +6,7 @@ import { Bell, PieChart } from "lucide-react";
 import Container from "@/components/Container.tsx";
 import PortfolioChart from "@/components/PortfolioChart.tsx";
 import RecentTransactions from "@/components/RecentTransactions.tsx";
-import VegaChart from "@/components/VegaChart.tsx";
+import { CircularProgress } from "@mui/material";
 
 const Index = () => {
   const [userPrompt, setUserPrompt] = useState("");
@@ -19,20 +19,16 @@ const Index = () => {
       <RecentTransactions />
     </Container>,
     // <Container>
-    //   <VegaChart spec/>
+    //   <div className="flex flex-row justify-center items-center">
+    //     <CircularProgress />
+    //   </div>
     // </Container>,
   ]);
 
   const handleGenerateVisualization = async (e: React.FormEvent) => {
     e.preventDefault();
-    const spec = await apiRequest(userPrompt);
     setUserPrompt(() => "");
-    setContainers((prev) => [
-      ...prev,
-      <Container>
-        <VegaChart spec={spec} />
-      </Container>,
-    ]);
+    setContainers((prev) => [...prev, <Container prompt={userPrompt} />]);
   };
 
   async function apiRequest(prompt: string) {
