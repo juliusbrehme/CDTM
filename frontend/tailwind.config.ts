@@ -53,7 +53,7 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         traderepublic: {
-          purple: "#9b87f5",
+          purple: "#a138ff",
           darkpurple: "#1A1F2C",
           gray: "#F6F6F7",
           red: "#ea384c",

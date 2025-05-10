@@ -140,12 +140,12 @@ const SankeyChart: React.FC = () => {
             orientation: "h",
             node: {
               pad: 20,
-              thickness: 40,
+              thickness: 30,
               label: sankeyData.node.label,
               color: sankeyData.node.color,
               align: "right"
             },
-            link: {
+            link: {   
               source: sankeyData.link.source,
               target: sankeyData.link.target,
               value: sankeyData.link.value,
@@ -156,8 +156,8 @@ const SankeyChart: React.FC = () => {
         layout={{
           font: { 
             size: 15,
-            color: "#303030",
-            weight: "bold",
+            color: "#202020",
+            weight: "semibold",
           },
           height: 700,
           margin: { l: 20, r: 20, t: 20, b: 20 },

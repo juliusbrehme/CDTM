@@ -176,7 +176,7 @@ const Index = () => {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
             <div>
               <h1 className="text-2xl md:text-3xl font-bold text-traderepublic-darkpurple">
-                Dashboard
+                Customize your Insights
               </h1>
               <p className="text-gray-500">Welcome back, John</p>
             </div>

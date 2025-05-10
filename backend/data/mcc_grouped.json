@@ -15,7 +15,41 @@
       "description": "Pet shops, pet food and supplies"
     }
   ],
-  "Food & Beverages": [
+  "Restaurants": [
+    {
+      "mcc": 5715,
+      "description": "Alcoholic beverage wholesalers"
+    },
+    {
+      "mcc": 5814,
+      "description": "Fast food restaurants"
+    },
+    {
+      "mcc": 5462,
+      "description": "Bakeries"
+    },
+    {
+      "mcc": 5811,
+      "description": "Caterers"
+    },
+    {
+      "mcc": 5812,
+      "description": "Eating places and restaurants"
+    },
+    {
+      "mcc": 5813,
+      "description": "Drinking places (alcoholic beverages) -- bars, taverns, night-clubs, cocktail lounges and discotheques"
+    }
+  ],
+  "Groceries": [
+    {
+      "mcc": 5422,
+      "description": "Freezer and locker meat provisioners"
+    },
+    {
+      "mcc": 5451,
+      "description": "Dairies"
+    },
     {
       "mcc": 743,
       "description": "Wine producers"
@@ -31,10 +65,6 @@
     {
       "mcc": 5499,
       "description": "Miscellaneous food shops -- convenience and speciality retail outlets"
-    },
-    {
-      "mcc": 5814,
-      "description": "Fast food restaurants"
     },
     {
       "mcc": 5921,
@@ -205,18 +235,6 @@
       "description": "Miscellaneous general merchandise"
     },
     {
-      "mcc": 5422,
-      "description": "Freezer and locker meat provisioners"
-    },
-    {
-      "mcc": 5451,
-      "description": "Dairies"
-    },
-    {
-      "mcc": 5462,
-      "description": "Bakeries"
-    },
-    {
       "mcc": 5531,
       "description": "Auto and home supply outlets"
     },
@@ -243,22 +261,6 @@
     {
       "mcc": 5697,
       "description": "Tailors, seamstresses, mending and alterations"
-    },
-    {
-      "mcc": 5715,
-      "description": "Alcoholic beverage wholesalers"
-    },
-    {
-      "mcc": 5811,
-      "description": "Caterers"
-    },
-    {
-      "mcc": 5812,
-      "description": "Eating places and restaurants"
-    },
-    {
-      "mcc": 5813,
-      "description": "Drinking places (alcoholic beverages) -- bars, taverns, night-clubs, cocktail lounges and discotheques"
     },
     {
       "mcc": 5935,
