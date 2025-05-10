@@ -1,0 +1,1146 @@
+{
+  "Health": [
+    {
+      "mcc": 5122,
+      "description": "Drugs, drug proprietors"
+    }   
+  ],
+  "Pet food & Veterinary": [
+    {
+      "mcc": 742,
+      "description": "Veterinary services"
+    },
+    {
+      "mcc": 5995,
+      "description": "Pet shops, pet food and supplies"
+    }
+  ],
+  "Food & Beverages": [
+    {
+      "mcc": 743,
+      "description": "Wine producers"
+    },
+    {
+      "mcc": 744,
+      "description": "Champagne producers"
+    },
+    {
+      "mcc": 5411,
+      "description": "Groceries and supermarkets"
+    },
+    {
+      "mcc": 5499,
+      "description": "Miscellaneous food shops -- convenience and speciality retail outlets"
+    },
+    {
+      "mcc": 5814,
+      "description": "Fast food restaurants"
+    },
+    {
+      "mcc": 5921,
+      "description": "Package shops -- beer, wine and liquor"
+    }
+  ],
+  "Agriculture": [
+    {
+      "mcc": 763,
+      "description": "Agricultural co-operatives"
+    },
+    {
+      "mcc": 780,
+      "description": "Landscaping and horticultural services"
+    },
+    {
+      "mcc": 4225,
+      "description": "Public warehousing and storage -- farm products, refrigerated goods and household goods"
+    },
+    {
+      "mcc": 5599,
+      "description": "Miscellaneous automotive, aircraft and farm equipment dealers -- not elsewhere classified"
+    }
+  ],
+  "Miscellaneous": [
+    {
+      "mcc": 1520,
+      "description": "General contractors -- residential and commercial"
+    },
+    {
+      "mcc": 1711,
+      "description": "Heating, plumbing and air-conditioning contractors"
+    },
+    {
+      "mcc": 1731,
+      "description": "Electrical contractors"
+    },
+    {
+      "mcc": 1740,
+      "description": "Masonry, stonework, tile setting, plastering and insulation contractors"
+    },
+    {
+      "mcc": 1761,
+      "description": "Roofing, siding and sheet metal work contractors"
+    },
+    {
+      "mcc": 1771,
+      "description": "Concrete work contractors"
+    },
+    {
+      "mcc": 1799,
+      "description": "Special trade contractors -- not elsewhere classified"
+    },
+    {
+      "mcc": 4468,
+      "description": "Marinas, marine service and supplies"
+    },
+    {
+      "mcc": 4582,
+      "description": "Airports, flying fields and airport terminals"
+    },
+    {
+      "mcc": 4812,
+      "description": "Telecommunication equipment and telephone sales"
+    },
+    {
+      "mcc": 4815,
+      "description": "Monthly summary telephone charges"
+    },
+    {
+      "mcc": 4900,
+      "description": "Utilities -- electric, gas, water and sanitary"
+    },
+    {
+      "mcc": 5021,
+      "description": "Office and commercial furniture"
+    },
+    {
+      "mcc": 5039,
+      "description": "Construction materials -- not elsewhere classified"
+    },
+    {
+      "mcc": 5044,
+      "description": "Office, photographic, photocopy and microfilm equipment"
+    },
+    {
+      "mcc": 5046,
+      "description": "Commercial equipment -- not elsewhere classified"
+    },
+    {
+      "mcc": 5047,
+      "description": "Dental/laboratory/medical/ophthalmic hospital equipment and supplies"
+    },
+    {
+      "mcc": 5051,
+      "description": "Metal service centres and offices"
+    },
+    {
+      "mcc": 5074,
+      "description": "Plumbing and heating equipment and supplies"
+    },
+    {
+      "mcc": 5085,
+      "description": "Industrial supplies -- not elsewhere classified"
+    },
+    {
+      "mcc": 5094,
+      "description": "Precious stones and metals, watches and jewellery"
+    },
+    {
+      "mcc": 5099,
+      "description": "Durable goods -- not elsewhere classified"
+    },
+    {
+      "mcc": 5111,
+      "description": "Stationery, office supplies and printing and writing paper"
+    },
+    {
+      "mcc": 5131,
+      "description": "Piece goods, notions and other dry goods"
+    },
+    {
+      "mcc": 5139,
+      "description": "Commercial footwear"
+    },
+    {
+      "mcc": 5169,
+      "description": "Chemicals and allied products -- not elsewhere classified"
+    },
+    {
+      "mcc": 5172,
+      "description": "Petroleum and petroleum products"
+    },
+    {
+      "mcc": 5193,
+      "description": "Florists' supplies, nursery stock and flowers"
+    },
+    {
+      "mcc": 5198,
+      "description": "Paints, varnishes and supplies"
+    },
+    {
+      "mcc": 5199,
+      "description": "Non-durable goods -- not elsewhere classified"
+    },
+    {
+      "mcc": 5200,
+      "description": "Home supply warehouse outlets"
+    },
+    {
+      "mcc": 5211,
+      "description": "Lumber and building materials outlets"
+    },
+    {
+      "mcc": 5261,
+      "description": "Lawn and garden supply outlets, including nurseries"
+    },
+    {
+      "mcc": 5271,
+      "description": "Mobile home dealers"
+    },
+    {
+      "mcc": 5300,
+      "description": "Wholesale clubs"
+    },
+    {
+      "mcc": 5399,
+      "description": "Miscellaneous general merchandise"
+    },
+    {
+      "mcc": 5422,
+      "description": "Freezer and locker meat provisioners"
+    },
+    {
+      "mcc": 5451,
+      "description": "Dairies"
+    },
+    {
+      "mcc": 5462,
+      "description": "Bakeries"
+    },
+    {
+      "mcc": 5531,
+      "description": "Auto and home supply outlets"
+    },
+    {
+      "mcc": 5532,
+      "description": "Automotive tyre outlets"
+    },
+    {
+      "mcc": 5542,
+      "description": "Automated fuel dispensers"
+    },
+    {
+      "mcc": 5551,
+      "description": "Boat dealers"
+    },
+    {
+      "mcc": 5592,
+      "description": "Motor home dealers"
+    },
+    {
+      "mcc": 5598,
+      "description": "Snowmobile dealers"
+    },
+    {
+      "mcc": 5697,
+      "description": "Tailors, seamstresses, mending and alterations"
+    },
+    {
+      "mcc": 5715,
+      "description": "Alcoholic beverage wholesalers"
+    },
+    {
+      "mcc": 5811,
+      "description": "Caterers"
+    },
+    {
+      "mcc": 5812,
+      "description": "Eating places and restaurants"
+    },
+    {
+      "mcc": 5813,
+      "description": "Drinking places (alcoholic beverages) -- bars, taverns, night-clubs, cocktail lounges and discotheques"
+    },
+    {
+      "mcc": 5935,
+      "description": "Wrecking and salvage yards"
+    },
+    {
+      "mcc": 5963,
+      "description": "Door-to-door sales"
+    },
+    {
+      "mcc": 5964,
+      "description": "Direct marketing -- catalogue merchants"
+    },
+    {
+      "mcc": 5966,
+      "description": "Direct marketing -- outbound telemarketing merchants"
+    },
+    {
+      "mcc": 5967,
+      "description": "Direct marketing -- inbound telemarketing merchants"
+    },
+    {
+      "mcc": 5968,
+      "description": "Direct marketing -- continuity/subscription merchants"
+    },
+    {
+      "mcc": 5969,
+      "description": "Direct marketing/direct marketers -- not elsewhere classified"
+    },
+    {
+      "mcc": 5975,
+      "description": "Hearing aids -- sales, service and supplies"
+    },
+    {
+      "mcc": 5976,
+      "description": "Orthopaedic goods and prosthetic devices"
+    },
+    {
+      "mcc": 5983,
+      "description": "Fuel dealers -- fuel oil, wood, coal and liquefied petroleum"
+    },
+    {
+      "mcc": 5992,
+      "description": "Florists"
+    },
+    {
+      "mcc": 5994,
+      "description": "Newsagents and news-stands"
+    },
+    {
+      "mcc": 5997,
+      "description": "Electric razor outlets -- sales and service"
+    },
+    {
+      "mcc": 6211,
+      "description": "Securities -- brokers and dealers"
+    },
+    {
+      "mcc": 7012,
+      "description": "Timeshares"
+    },
+    {
+      "mcc": 7216,
+      "description": "Dry cleaners"
+    },
+    {
+      "mcc": 7221,
+      "description": "Photographic studios"
+    },
+    {
+      "mcc": 7297,
+      "description": "Massage parlours"
+    },
+    {
+      "mcc": 7298,
+      "description": "Health and beauty spas"
+    },
+    {
+      "mcc": 7321,
+      "description": "Consumer credit reporting agencies"
+    },
+    {
+      "mcc": 7322,
+      "description": "Debt collection agencies"
+    },
+    {
+      "mcc": 7395,
+      "description": "Photofinishing laboratories and photo developing"
+    },
+    {
+      "mcc": 7829,
+      "description": "Motion picture and video tape production and distribution"
+    },
+    {
+      "mcc": 7922,
+      "description": "Theatrical producers (except motion pictures) and ticket agencies"
+    },
+    {
+      "mcc": 7929,
+      "description": "Bands, orchestras and miscellaneous entertainers -- not elsewhere classified"
+    },
+    {
+      "mcc": 7932,
+      "description": "Billiard and pool establishments"
+    },
+    {
+      "mcc": 7933,
+      "description": "Bowling alleys"
+    },
+    {
+      "mcc": 7991,
+      "description": "Tourist attractions and exhibits"
+    },
+    {
+      "mcc": 7992,
+      "description": "Public golf courses"
+    },
+    {
+      "mcc": 7998,
+      "description": "Aquariums, seaquariums and dolphinariums"
+    },
+    {
+      "mcc": 8011,
+      "description": "Doctors and physicians -- not elsewhere classified"
+    },
+    {
+      "mcc": 8021,
+      "description": "Dentists and orthodontists"
+    },
+    {
+      "mcc": 8031,
+      "description": "Osteopaths"
+    },
+    {
+      "mcc": 8041,
+      "description": "Chiropractors"
+    },
+    {
+      "mcc": 8042,
+      "description": "Optometrists and ophthalmologists"
+    },
+    {
+      "mcc": 8043,
+      "description": "Opticians, optical goods and eyeglasses"
+    },
+    {
+      "mcc": 8049,
+      "description": "Podiatrists and chiropodists"
+    },
+    {
+      "mcc": 8062,
+      "description": "Hospitals"
+    },
+    {
+      "mcc": 8071,
+      "description": "Medical and dental laboratories"
+    },
+    {
+      "mcc": 8398,
+      "description": "Charitable and social service organizations"
+    },
+    {
+      "mcc": 8641,
+      "description": "Civic, social and fraternal associations"
+    },
+    {
+      "mcc": 8651,
+      "description": "Political organizations"
+    },
+    {
+      "mcc": 8661,
+      "description": "Religious organizations"
+    },
+    {
+      "mcc": 8675,
+      "description": "Automobile associations"
+    },
+    {
+      "mcc": 8699,
+      "description": "Membership organization -- not elsewhere classified"
+    },
+    {
+      "mcc": 8734,
+      "description": "Testing laboratories (non-medical)"
+    },
+    {
+      "mcc": 9211,
+      "description": "Court costs, including alimony and child support"
+    },
+    {
+      "mcc": 9222,
+      "description": "Fines"
+    },
+    {
+      "mcc": 9223,
+      "description": "Bail and bond payments"
+    },
+    {
+      "mcc": 9311,
+      "description": "Tax payments"
+    }
+  ],
+  "Travel & Transportation": [
+    {
+      "mcc": 1750,
+      "description": "Carpentry contractors"
+    },
+    {
+      "mcc": 4011,
+      "description": "Railroads"
+    },
+    {
+      "mcc": 7011,
+      "description": "Lodging -- hotels, motels and resorts"
+    },
+    {
+      "mcc": 4111,
+      "description": "Local and suburban commuter passenger transportation, including ferries"
+    },
+    {
+      "mcc": 4112,
+      "description": "Passenger railways"
+    },
+    {
+      "mcc": 4121,
+      "description": "Taxi-cabs and limousines"
+    },
+    {
+      "mcc": 4131,
+      "description": "Bus lines"
+    },
+    {
+      "mcc": 4214,
+      "description": "Motor freight carriers and trucking -- local and long distance, moving and storage companies and local delivery"
+    },
+    {
+      "mcc": 4411,
+      "description": "Steamships and cruise lines"
+    },
+    {
+      "mcc": 4457,
+      "description": "Boat rentals and leasing"
+    },
+    {
+      "mcc": 4511,
+      "description": "Airlines and air carriers"
+    },
+    {
+      "mcc": 4722,
+      "description": "Travel agencies and tour operators"
+    },
+    {
+      "mcc": 4784,
+      "description": "Tolls and bridge fees"
+    },
+    {
+      "mcc": 5561,
+      "description": "Camper, recreational and utility trailer dealers"
+    },
+    {
+      "mcc": 5947,
+      "description": "Gift, card, novelty and souvenir shops"
+    },
+    {
+      "mcc": 5978,
+      "description": "Typewriter outlets -- sales, service and rentals"
+    },
+    {
+      "mcc": 6051,
+      "description": "Non-financial institutions -- foreign currency, money orders (not wire transfer), scrip and travellers' checks"
+    },
+    {
+      "mcc": 7033,
+      "description": "Trailer parks and camp-sites"
+    },
+    {
+      "mcc": 7296,
+      "description": "Clothing rentals -- costumes, uniforms and formal wear"
+    },
+    {
+      "mcc": 7394,
+      "description": "Equipment, tool, furniture and appliance rentals and leasing"
+    },
+    {
+      "mcc": 7512,
+      "description": "Automobile rentals"
+    },
+    {
+      "mcc": 7513,
+      "description": "Truck and utility trailer rentals"
+    },
+    {
+      "mcc": 7519,
+      "description": "Motor home and recreational vehicle rentals"
+    },
+    {
+      "mcc": 7523,
+      "description": "Parking lots and garages"
+    },
+    {
+      "mcc": 7542,
+      "description": "Car washes"
+    },
+    {
+      "mcc": 7841,
+      "description": "Video tape rentals"
+    },
+    {
+      "mcc": 7996,
+      "description": "Amusement parks, circuses, carnivals and fortune tellers"
+    },
+    {
+      "mcc": 8050,
+      "description": "Nursing and personal care facilities"
+    },
+    {
+      "mcc": 8244,
+      "description": "Business and secretarial schools"
+    }
+  ],
+  "Services": [
+    {
+      "mcc": 2741,
+      "description": "Miscellaneous publishing and printing services"
+    },
+    {
+      "mcc": 2791,
+      "description": "Typesetting, platemaking and related services"
+    },
+    {
+      "mcc": 2842,
+      "description": "Speciality cleaning, polishing and sanitation preparations"
+    },
+    {
+      "mcc": 4119,
+      "description": "Ambulance services"
+    },
+    {
+      "mcc": 4215,
+      "description": "Courier services -- air and ground and freight forwarders"
+    },
+    {
+      "mcc": 4789,
+      "description": "Transportation services -- not elsewhere classified"
+    },
+    {
+      "mcc": 4814,
+      "description": "Telecommunication services, including local and long distance calls, credit card calls, calls through use of magnetic stripe reading telephones and faxes"
+    },
+    {
+      "mcc": 4816,
+      "description": "Computer network/information services"
+    },
+    {
+      "mcc": 4821,
+      "description": "Telegraph services"
+    },
+    {
+      "mcc": 4899,
+      "description": "Cable and other pay television services"
+    },
+    {
+      "mcc": 5511,
+      "description": "Car and truck dealers (new and used) sales, services, repairs, parts and leasing"
+    },
+    {
+      "mcc": 5521,
+      "description": "Car and truck dealers (used only) sales, service, repairs, parts and leasing"
+    },
+    {
+      "mcc": 5541,
+      "description": "Service stations (with or without ancillary services)"
+    },
+    {
+      "mcc": 5713,
+      "description": "Floor covering services"
+    },
+    {
+      "mcc": 5932,
+      "description": "Antique shops -- sales, repairs and restoration services"
+    },
+    {
+      "mcc": 5960,
+      "description": "Direct marketing -- insurance services"
+    },
+    {
+      "mcc": 5962,
+      "description": "Telemarketing -- travel-related arrangement services"
+    },
+    {
+      "mcc": 5996,
+      "description": "Swimming pools -- sales, supplies and services"
+    },
+    {
+      "mcc": 6012,
+      "description": "Financial institutions -- merchandise and services"
+    },
+    {
+      "mcc": 7210,
+      "description": "Laundry, cleaning and garment services"
+    },
+    {
+      "mcc": 7211,
+      "description": "Laundry services -- family and commercial"
+    },
+    {
+      "mcc": 7217,
+      "description": "Carpet and upholstery cleaning"
+    },
+    {
+      "mcc": 7251,
+      "description": "Shoe repair shops, shoe shine parlours and hat cleaning shops"
+    },
+    {
+      "mcc": 7261,
+      "description": "Funeral services and crematoriums"
+    },
+    {
+      "mcc": 7273,
+      "description": "Dating and escort services"
+    },
+    {
+      "mcc": 7276,
+      "description": "Tax preparation services"
+    },
+    {
+      "mcc": 7277,
+      "description": "Counselling services -- debt, marriage and personal"
+    },
+    {
+      "mcc": 7278,
+      "description": "Buying and shopping services and clubs"
+    },
+    {
+      "mcc": 7299,
+      "description": "Miscellaneous personal services -- not elsewhere classified"
+    },
+    {
+      "mcc": 7311,
+      "description": "Advertising services"
+    },
+    {
+      "mcc": 7338,
+      "description": "Quick copy, reproduction and blueprinting services"
+    },
+    {
+      "mcc": 7339,
+      "description": "Stenographic and secretarial support services"
+    },
+    {
+      "mcc": 7342,
+      "description": "Exterminating and disinfecting services"
+    },
+    {
+      "mcc": 7349,
+      "description": "Cleaning, maintenance and janitorial services"
+    },
+    {
+      "mcc": 7361,
+      "description": "Employment agencies and temporary help services"
+    },
+    {
+      "mcc": 7372,
+      "description": "Computer programming, data processing and integrated systems design services"
+    },
+    {
+      "mcc": 7375,
+      "description": "Information retrieval services"
+    },
+    {
+      "mcc": 7379,
+      "description": "Computer maintenance and repair services -- not elsewhere classified"
+    },
+    {
+      "mcc": 7392,
+      "description": "Management, consulting and public relations services"
+    },
+    {
+      "mcc": 7393,
+      "description": "Detective agencies, protective agencies and security services, including armoured cars and guard dogs"
+    },
+    {
+      "mcc": 7399,
+      "description": "Business services -- not elsewhere classified"
+    },
+    {
+      "mcc": 7531,
+      "description": "Automotive body repair shops"
+    },
+    {
+      "mcc": 7534,
+      "description": "Tyre retreading and repair shops"
+    },
+    {
+      "mcc": 7549,
+      "description": "Towing services"
+    },
+    {
+      "mcc": 7622,
+      "description": "Electronics repair shops"
+    },
+    {
+      "mcc": 7623,
+      "description": "Air conditioning and refrigeration repair shops"
+    },
+    {
+      "mcc": 7629,
+      "description": "Electrical and small appliance repair shops"
+    },
+    {
+      "mcc": 7631,
+      "description": "Watch, clock and jewellery repair shops"
+    },
+    {
+      "mcc": 7641,
+      "description": "Furniture reupholstery, repair and refinishing"
+    },
+    {
+      "mcc": 7692,
+      "description": "Welding services"
+    },
+    {
+      "mcc": 7699,
+      "description": "Miscellaneous repair shops and related services"
+    },
+    {
+      "mcc": 7999,
+      "description": "Recreation services -- not elsewhere classified"
+    },
+    {
+      "mcc": 8099,
+      "description": "Medical services and health practitioners -- not elsewhere classified"
+    },
+    {
+      "mcc": 8111,
+      "description": "Legal services and attorneys"
+    },
+    {
+      "mcc": 8299,
+      "description": "Schools and educational services -- not elsewhere classified"
+    },
+    {
+      "mcc": 8351,
+      "description": "Child care services"
+    },
+    {
+      "mcc": 8911,
+      "description": "Architectural, engineering and surveying services"
+    },
+    {
+      "mcc": 8931,
+      "description": "Accounting, auditing and bookkeeping services"
+    },
+    {
+      "mcc": 8999,
+      "description": "Professional services -- not elsewhere classified"
+    },
+    {
+      "mcc": 9399,
+      "description": "Government services -- not elsewhere classified"
+    },
+    {
+      "mcc": 9402,
+      "description": "Postal services -- government only"
+    }
+  ],
+  "Leisure & Entertainment": [
+    {
+      "mcc": 5013,
+      "description": "Motor vehicle supplies and new parts"
+    },
+    {
+      "mcc": 5065,
+      "description": "Electrical parts and equipment"
+    },
+    {
+      "mcc": 5311,
+      "description": "Department stores"
+    },
+    {
+      "mcc": 5533,
+      "description": "Automotive parts and accessories outlets"
+    },
+    {
+      "mcc": 5655,
+      "description": "Sports and riding apparel shops"
+    },
+    {
+      "mcc": 5941,
+      "description": "Sporting goods shops"
+    },
+    {
+      "mcc": 5945,
+      "description": "Hobby, toy and game shops"
+    },
+    {
+      "mcc": 5970,
+      "description": "Artist supply and craft shops"
+    },
+    {
+      "mcc": 5971,
+      "description": "Art dealers and galleries"
+    },
+    {
+      "mcc": 7032,
+      "description": "Sporting and recreational camps"
+    },
+    {
+      "mcc": 7333,
+      "description": "Commercial photography, art and graphics"
+    },
+    {
+      "mcc": 7832,
+      "description": "Motion picture theatres"
+    },
+    {
+      "mcc": 7941,
+      "description": "Commercial sports, professional sports clubs, athletic fields and sports promoters"
+    },
+    {
+      "mcc": 7993,
+      "description": "Video amusement game supplies"
+    },
+    {
+      "mcc": 7994,
+      "description": "Video game arcades and establishments"
+    },
+    {
+      "mcc": 7995,
+      "description": "Betting, including lottery tickets, casino gaming chips, off-track betting and wagers at race tracks"
+    },
+    {
+      "mcc": 7997,
+      "description": "Membership clubs (sports, recreation, athletic), country clubs and private golf courses"
+    }
+  ],
+  "IT & Eletronics": [
+    {
+      "mcc": 5045,
+      "description": "Computers, computer peripheral equipment -- not elsewhere classified"
+    },
+    {
+      "mcc": 5734,
+      "description": "Computer software outlets"
+    }
+  ],
+  "Retail": [
+    {
+      "mcc": 5072,
+      "description": "Hardware equipment and supplies"
+    },
+    {
+      "mcc": 5137,
+      "description": "Men's, women's and children's uniforms and commercial clothing"
+    },
+    {
+      "mcc": 5231,
+      "description": "Glass, paint and wallpaper shops"
+    },
+    {
+      "mcc": 5251,
+      "description": "Hardware shops"
+    },
+    {
+      "mcc": 5309,
+      "description": "Duty-free shops"
+    },
+    {
+      "mcc": 5310,
+      "description": "Discount shops"
+    },
+    {
+      "mcc": 5331,
+      "description": "Variety stores"
+    },
+    {
+      "mcc": 5441,
+      "description": "Candy, nut and confectionery shops"
+    },
+    {
+      "mcc": 5571,
+      "description": "Motorcycle shops and dealers"
+    },
+    {
+      "mcc": 5611,
+      "description": "Men's and boys' clothing and accessory shops"
+    },
+    {
+      "mcc": 5621,
+      "description": "Women's ready-to-wear shops"
+    },
+    {
+      "mcc": 5631,
+      "description": "Women's accessory and speciality shops"
+    },
+    {
+      "mcc": 5641,
+      "description": "Children's and infants' wear shops"
+    },
+    {
+      "mcc": 5651,
+      "description": "Family clothing shops"
+    },
+    {
+      "mcc": 5661,
+      "description": "Shoe shops"
+    },
+    {
+      "mcc": 5681,
+      "description": "Furriers and fur shops"
+    },
+    {
+      "mcc": 5691,
+      "description": "Men's and women's clothing shops"
+    },
+    {
+      "mcc": 5698,
+      "description": "Wig and toupee shops"
+    },
+    {
+      "mcc": 5699,
+      "description": "Miscellaneous apparel and accessory shops"
+    },
+    {
+      "mcc": 5712,
+      "description": "Furniture, home furnishings and equipment shops and manufacturers, except appliances"
+    },
+    {
+      "mcc": 5714,
+      "description": "Drapery, window covering and upholstery shops"
+    },
+    {
+      "mcc": 5718,
+      "description": "Fireplaces, fireplace screens and accessories shops"
+    },
+    {
+      "mcc": 5719,
+      "description": "Miscellaneous home furnishing speciality shops"
+    },
+    {
+      "mcc": 5722,
+      "description": "Household appliance shops"
+    },
+    {
+      "mcc": 5732,
+      "description": "Electronics shops"
+    },
+    {
+      "mcc": 5733,
+      "description": "Music shops -- musical instruments, pianos and sheet music"
+    },
+    {
+      "mcc": 5735,
+      "description": "Record shops"
+    },
+    {
+      "mcc": 5912,
+      "description": "Drug stores and pharmacies"
+    },
+    {
+      "mcc": 5931,
+      "description": "Used merchandise and second-hand shops"
+    },
+    {
+      "mcc": 5933,
+      "description": "Pawn shops"
+    },
+    {
+      "mcc": 5937,
+      "description": "Antique reproduction shops"
+    },
+    {
+      "mcc": 5940,
+      "description": "Bicycle shops -- sales and service"
+    },
+    {
+      "mcc": 5942,
+      "description": "Bookshops"
+    },
+    {
+      "mcc": 5943,
+      "description": "Stationery, office and school supply shops"
+    },
+    {
+      "mcc": 5944,
+      "description": "Jewellery, watch, clock and silverware shops"
+    },
+    {
+      "mcc": 5946,
+      "description": "Camera and photographic supply shops"
+    },
+    {
+      "mcc": 5948,
+      "description": "Luggage and leather goods shops"
+    },
+    {
+      "mcc": 5949,
+      "description": "Sewing, needlework, fabric and piece goods shops"
+    },
+    {
+      "mcc": 5950,
+      "description": "Glassware and crystal shops"
+    },
+    {
+      "mcc": 5965,
+      "description": "Direct marketing -- combination catalogue and retail merchants"
+    },
+    {
+      "mcc": 5972,
+      "description": "Stamp and coin shops"
+    },
+    {
+      "mcc": 5973,
+      "description": "Religious goods and shops"
+    },
+    {
+      "mcc": 5993,
+      "description": "Cigar shops and stands"
+    },
+    {
+      "mcc": 5998,
+      "description": "Tent and awning shops"
+    },
+    {
+      "mcc": 5999,
+      "description": "Miscellaneous and speciality retail outlets"
+    },
+    {
+      "mcc": 7230,
+      "description": "Beauty and barber shops"
+    },
+    {
+      "mcc": 7535,
+      "description": "Automotive paint shops"
+    },
+    {
+      "mcc": 7538,
+      "description": "Automotive service shops (non-dealer)"
+    }
+  ],
+  "Education & Books": [
+    {
+      "mcc": 5192,
+      "description": "Books, periodicals and newspapers"
+    },
+    {
+      "mcc": 7911,
+      "description": "Dance halls, studios and schools"
+    },
+    {
+      "mcc": 8211,
+      "description": "Elementary and secondary schools"
+    },
+    {
+      "mcc": 8220,
+      "description": "Colleges, universities, professional schools and junior colleges"
+    },
+    {
+      "mcc": 8241,
+      "description": "Correspondence schools"
+    },
+    {
+      "mcc": 8249,
+      "description": "Trade and vocational schools"
+    }
+  ],
+  "Finance & Insurance": [
+    {
+      "mcc": 6010,
+      "description": "Financial institutions -- manual cash disbursements"
+    },
+    {
+      "mcc": 6011,
+      "description": "Financial institutions -- automated cash disbursements"
+    },
+    {
+      "mcc": 6300,
+      "description": "Insurance sales, underwriting and premiums"
+    },
+    {
+      "mcc": 4829,
+      "description": "Wire transfers and money orders"
+    }
+  ]
+}
