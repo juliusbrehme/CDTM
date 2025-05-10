@@ -15,12 +15,20 @@ const Index = () => {
   const [showAssetDistribution, setShowAssetDistribution] = useState(true);
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
 
-  const handleGenerateVisualization = (e: React.FormEvent) => {
+  const handleGenerateVisualization = async (e: React.FormEvent) => {
     e.preventDefault();
     // Here you would handle the user prompt to generate a visualization
     console.log("Generating visualization based on:", userPrompt);
     // Reset the input after submission
-    setUserPrompt("");
+    setUserPrompt("");  
+    const response = await fetch("http://localhost:8000/api/generate-chart", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userPrompt }),
+    });
+  
+    const data = await response.json();
+    //setChartSpec(data); // Set state with Vega/Recharts spec or chart data
   };
 
   return (
