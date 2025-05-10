@@ -6,7 +6,14 @@ import { Bell, PieChart } from "lucide-react";
 import Container from "@/components/Container.tsx";
 import PortfolioChart from "@/components/PortfolioChart.tsx";
 import RecentTransactions from "@/components/RecentTransactions.tsx";
-import { CircularProgress } from "@mui/material";
+import AssetDistribution from "@/components/AssetDistribution.tsx";
+import RadarChart from "@/components/RadarChart.tsx";
+import { Dendrogram } from "@/components/DendrogramChart";
+import TreeMapChart from "@/components/TreeMapChart";
+
+import RadarJSON from "@/data/test_radar.json";
+import TreeJSON from "@/data/test_tree.json";
+import DendrogramJSON from "@/data/test_dendogram.json";
 
 const Index = () => {
   const [userPrompt, setUserPrompt] = useState("");
@@ -18,17 +25,45 @@ const Index = () => {
     <Container>
       <RecentTransactions />
     </Container>,
-    // <Container>
-    //   <div className="flex flex-row justify-center items-center">
-    //     <CircularProgress />
-    //   </div>
-    // </Container>,
   ]);
 
-  const handleGenerateVisualization = async (e: React.FormEvent) => {
+  const queries = [
+    "Give me an overview of my spendings on food this month.",
+    "What are my top spendings this month?",
+    "How much did I spend on plants and gardening?",
+  ];
+  const handleGenerateVisualization = (e: React.FormEvent) => {
     e.preventDefault();
+    if (queries.includes(userPrompt)) {
+      const result_radar = RadarJSON.find((item) => item.query === userPrompt);
+      const radar_testData = result_radar?.data;
+
+      const result_tree = TreeJSON.find((item) => item.query === userPrompt);
+      const tree_testData = result_tree?.data;
+
+      const result_dendrogram = DendrogramJSON.find(
+        (item) => item.query === userPrompt,
+      );
+      const dendrogram_testData = result_dendrogram?.data;
+      setContainers((prev) => [
+        ...prev,
+
+        <Container colSpan="col-span-2">
+          <TreeMapChart data={tree_testData} />
+        </Container>,
+        <Container>
+          <RadarChart data={radar_testData} />
+        </Container>,
+        <Container>
+          <Dendrogram data={dendrogram_testData} />
+        </Container>,
+      ]);
+    } else {
+      setContainers((prev) => [...prev, <Container prompt={userPrompt} />]);
+    }
     setUserPrompt(() => "");
-    setContainers((prev) => [...prev, <Container prompt={userPrompt} />]);
+
+    setUserPrompt(() => "");
   };
 
   async function apiRequest(prompt: string) {
@@ -79,6 +114,7 @@ const Index = () => {
               </Button>
             </div>
           </div>
+
           {/* User Input for Visualization */}
           <form onSubmit={handleGenerateVisualization} className="mb-6">
             <div className="flex gap-2">

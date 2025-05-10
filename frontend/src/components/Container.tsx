@@ -7,9 +7,10 @@ import { CircularProgress, Typography } from "@mui/material";
 interface Props {
   children?: ReactNode;
   prompt?: string;
+  colSpan?: string;
 }
 
-export default function Container({ children, prompt }: Props) {
+export default function Container({ children, prompt, colSpan="col-span-1" }: Props) {
   const [showContainer, setShowContainer] = useState(true);
   const [graph, setGraph] = useState<ReactNode | null>(null);
 
@@ -56,7 +57,7 @@ export default function Container({ children, prompt }: Props) {
   }
   return (
     showContainer && (
-      <div className="relative">
+      <div className={`relative ${colSpan} flex flex-col gap-4`}>
         <Button
           variant="ghost"
           size="icon"
@@ -65,7 +66,7 @@ export default function Container({ children, prompt }: Props) {
         >
           <X className="h-4 w-4 text-gray-700" />
         </Button>
-        <div className="bg-white rounded-xl shadow-sm p-6 animate-fade-in h-96 overflow-auto">
+        <div className="bg-white rounded-xl shadow-sm p-6 animate-fade-in overflow-auto">
           {children}
         </div>
       </div>
