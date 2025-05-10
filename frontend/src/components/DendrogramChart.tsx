@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import * as d3 from "d3";
+import { Checkbox } from "@mui/material";
 
 export type TreeNode = {
     type: 'node';
@@ -67,7 +68,7 @@ export type TreeNode = {
   };
   
 
-const MARGIN = { top: 35, right: 150, bottom: 10, left: 35 };
+const MARGIN = { top: 35, right: 250, bottom: 50, left: 35 };
 
 
 
@@ -81,6 +82,11 @@ type DendrogramProps = {
 export const Dendrogram = ({ width = 600, height= 550, data = dataT, id}: DendrogramProps) => {
   const boundsWidth = width - MARGIN.right - MARGIN.left;
   const boundsHeight = height - MARGIN.top - MARGIN.bottom;
+  const [isLabelingActive, setIsLabelingActive] = useState(true);
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsLabelingActive(event.target.checked);
+  };
 
   const hierarchy = useMemo(() => {
     return d3.hierarchy(data).sum((d) => d.value);
@@ -144,7 +150,7 @@ export const Dendrogram = ({ width = 600, height= 550, data = dataT, id}: Dendro
             textAnchor="left"
             alignmentBaseline="hanging"
             fill="test">
-            {node.data.name}
+            {isLabelingActive && (<>{node.data.name}</>)}
           </text>
         )}
       </g>
@@ -183,7 +189,8 @@ export const Dendrogram = ({ width = 600, height= 550, data = dataT, id}: Dendro
           alignmentBaseline="middle"
           fill="black"
           fontWeight={500}>
-          {node.data.value}$
+          {isLabelingActive && (<>{node.data.value}$</>)}
+          
         </text>
       )}
       </g>
@@ -203,6 +210,8 @@ export const Dendrogram = ({ width = 600, height= 550, data = dataT, id}: Dendro
               Dynamic Mindmap
             </h3>
             <p className="text-gray-500">Get deep insights to your data</p>
+            <p className="text-gray-500 inline" style={{ paddingTop: "-10px", marginRight: "8px" }}>Activate Labeling</p>
+            <Checkbox checked={isLabelingActive} id="labeling-cbx" style={{ color: "#A138FF" }} onChange={handleCheckboxChange} />
         
 
             <svg className="p-15" width={width} height={height}>   

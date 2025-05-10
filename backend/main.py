@@ -242,7 +242,7 @@ You are a data visualization expert and this is your data:
     ]
   }
 }
-Use this color palette: '#8889DD', '#9597E4', '#8DC77B', '#A5D297', '#E2CF45', '#F8C12D'.
+Make it colorful and try to make nodes in the same branch same color.
 Based on the given prompt, extract the most relevant information and search for relevant groups and categories.
 Then follow the structure above and generate a JSON file.
 Make sure to use the correct data types and formats.
