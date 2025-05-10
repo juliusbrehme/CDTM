@@ -31,7 +31,7 @@ const Index = () => {
   const [dendrogramCounter, setDendrogramCounter] = useState(0);
 
   const [containers, setContainers] = useState<React.ReactNode[]>([
-    <Container colSpan="col-span-2">
+    <Container colSpan="col-span-1">
       <PortfolioChart />
     </Container>,
     <Container>
@@ -117,7 +117,7 @@ const Index = () => {
         <SankeyChart />
       </Container>])
     } else {
-      setContainers((prev) => [...prev, <Container prompt={userPrompt} />]);
+      setContainers((prev) => [ ...prev, <Container prompt={userPrompt} />]);
       createDendrogram();
     }
 
@@ -276,10 +276,10 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <h2 className="text-xl font-bold text-traderepublic-darkpurple">
-              <span className="text-traderepublic-purple">Trade</span>Finance
+              <span className="text-traderepublic-purple">Prompt</span>Republic
             </h2>
             <p className="text-sm text-gray-500">
-              © 2025 TradeFinance. All rights reserved.
+              © 2025 PromptRepublic. All rights reserved.
             </p>
           </div>
 
