@@ -35,7 +35,7 @@ def load_data():
         sliced_df = banking_temp[banking_temp["userId"] == "0bf3b550-dc5b-4f3e-91f4-162b687b97c6"]
         sliced_df = sliced_df.replace([float('inf'), float('-inf')], None).fillna('')
         sliced_df['side'] = sliced_df['side'].str.strip().str.lower()
-        sliced_df['category'] = sliced_df['mcc'].apply(map_mcc_to_category)
+        sliced_df['category'] = sliced_df['mcc'].apply(map_mcc_to_grouping)
 
         # Step 1: Convert to datetime
         sliced_df["bookingDate"] = pd.to_datetime(sliced_df["bookingDate"], errors='coerce')

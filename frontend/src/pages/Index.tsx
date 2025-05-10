@@ -26,9 +26,9 @@ const SpeechRecognition = window.webkitSpeechRecognition || (window as any).Spee
 
 const Index = () => {
   const [userPrompt, setUserPrompt] = useState("");
-  const [isListening, setIsListening] = useState(false); // State to track if voice recognition is active
+  const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef<InstanceType<typeof SpeechRecognition> | null>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null); // Ref to store the timeout for stopping recognition
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [containers, setContainers] = useState<React.ReactNode[]>([
     <Container>
       <PortfolioChart />
@@ -38,28 +38,39 @@ const Index = () => {
     </Container>,
     <Container colSpan="col-span-1">
       <SankeyChart />
-    </Container>  ]);
+    </Container>,
+  ]);
 
   const queries = [
     "Give me an overview of my spendings on food this month.",
     "What are my top spendings this month?",
     "How much did I spend on plants and gardening?",
+    "test",
   ];
-  const handleGenerateVisualization = (e: React.FormEvent) => {
+
+  const handleGenerateVisualization = (e: React.FormEvent, inputPrompt?:string) => {
     e.preventDefault();
-    if (queries.includes(userPrompt)) {
-      const resultRadar = RadarJSON.find((item) => item.query === userPrompt);
+    let prompt = userPrompt
+    if(inputPrompt) {
+      prompt = inputPrompt;
+    }
+
+    const normalizeString = (str: string) => {
+      return str.trim().toLowerCase().replace(/[.,!?]$/, ""); // Entfernt Satzzeichen am Ende und macht den String klein
+    };
+
+    if (queries.some((query) => normalizeString(query) === normalizeString(prompt))) {
+      const resultRadar = RadarJSON.find((item) => normalizeString(item.query) === normalizeString(prompt));
       const radarTestData = resultRadar?.data;
-      const resultTree = TreeJSON.find((item) => item.query === userPrompt);
+
+      const resultTree = TreeJSON.find((item) => normalizeString(item.query) === normalizeString(prompt));
       const treeTestData = resultTree?.data;
 
-      const resultDendrogram = DendrogramJSON.find(
-        (item) => item.query === userPrompt,
-      );
+      const resultDendrogram = DendrogramJSON.find((item) => normalizeString(item.query) === normalizeString(prompt));
       const dendrogramTestData = resultDendrogram?.data;
+
       setContainers((prev) => [
         ...prev,
-
         <Container colSpan="col-span-2">
           <TreeMapChart data={treeTestData} />
         </Container>,
@@ -71,16 +82,14 @@ const Index = () => {
         </Container>,
       ]);
     } else {
-      setContainers((prev) => [...prev, <Container prompt={userPrompt} />]);
+      setContainers((prev) => [...prev, <Container prompt={prompt} />]);
     }
-    setUserPrompt(() => "");
 
     setUserPrompt(() => "");
   };
 
-  ////////////////////
   useEffect(() => {
-    if ('webkitSpeechRecognition' in window) {
+    if ("webkitSpeechRecognition" in window) {
       const recognition = new SpeechRecognition();
       recognition.continuous = false;
       recognition.interimResults = true;
@@ -88,12 +97,10 @@ const Index = () => {
 
       recognition.onstart = () => {
         setIsListening(true);
-        console.log("Voice recognition started");
       };
 
       recognition.onend = () => {
         setIsListening(false);
-        console.log("Voice recognition ended");
       };
 
       recognition.onerror = (event) => {
@@ -102,24 +109,33 @@ const Index = () => {
       };
 
       recognition.onresult = (event) => {
-        const transcript = Array.from(event.results)
-          .map(result => result[0].transcript)
-          .join("");
+        let interimTranscript = "";
+        let finalTranscript = "";
 
-        setUserPrompt(transcript);
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          const result = event.results[i];
+          if (result.isFinal) {
+            finalTranscript += result[0].transcript;
+          } else {
+            interimTranscript += result[0].transcript;
+          }
+        }
+        console.log("Final Transcript:", finalTranscript);
 
-        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        // Zeige auch Zwischenstand in der Suchleiste
+        setUserPrompt(finalTranscript);
+        
 
-        timeoutRef.current = setTimeout(() => {
-          handleGenerateVisualization(new Event("submit") as any);
-        }, 2000);
+        if (finalTranscript) {
+          setTimeout(() => 
+            handleGenerateVisualization({ preventDefault: () => {} } as React.FormEvent, finalTranscript), 1500);
+        }
       };
 
       recognitionRef.current = recognition;
-    } else {
-      console.log("Speech recognition not supported");
     }
   }, []);
+  
 
   const startVoiceRecognition = () => {
     if (recognitionRef.current) {
