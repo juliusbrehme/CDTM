@@ -209,7 +209,7 @@ async def generate_chart_json(prompt: Prompt):
     # Define the system prompt for the LLM
     bankingDataframe['group'] = bankingDataframe['mcc'].apply(map_mcc_to_grouping)
     data_str = bankingDataframe[["bookingDate", "amount", "category", "group"]].astype(str).to_string(index=False)
-    print(data_str)
+    
     system_prompt = """
 You are a data visualization expert and this is your data:
 """ + data_str + """
@@ -266,7 +266,7 @@ VALID JSON ONLY, NO EXPLANATION, start with a { and end with a }. This is the us
     # Call the OpenAI API
     client = OpenAI(api_key="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")
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-4.1",
         messages=[
             {"role": "system", "content": system_prompt},
         ]
