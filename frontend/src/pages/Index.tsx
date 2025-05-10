@@ -2,27 +2,27 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
-import PortfolioChart from "@/components/PortfolioChart";
-import AccountBalance from "@/components/AccountBalance";
-import AssetDistribution from "@/components/AssetDistribution";
-import RecentTransactions from "@/components/RecentTransactions";
-import { BarChart, Wallet, PieChart, Bell, X } from "lucide-react";
+import { PieChart, Bell } from "lucide-react";
 import Container from "@/components/Container.tsx";
-import Dashboard from "@/components/Dashboard.tsx";
+import React from "react";
 
 const Index = () => {
   const [userPrompt, setUserPrompt] = useState("");
-  const [showPortfolioChart, setShowPortfolioChart] = useState(true);
-  const [showAssetDistribution, setShowAssetDistribution] = useState(true);
-  const [showRecentTransactions, setShowRecentTransactions] = useState(true);
+
+  const [containers, setContainers] = useState<React.ReactNode[]>([]);
 
   const handleGenerateVisualization = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would handle the user prompt to generate a visualization
-    console.log("Generating visualization based on:", userPrompt);
-    // Reset the input after submission
-    setUserPrompt("");
+    setUserPrompt(() => "");
+    setContainers((prev) => [
+      ...prev,
+      <Container>
+        <div>Hello World</div>
+      </Container>,
+    ]);
   };
+
+  const listContainer = containers.map((container) => container);
 
   return (
     <div className="min-h-screen bg-traderepublic-gray flex flex-col">
@@ -54,7 +54,6 @@ const Index = () => {
               </Button>
             </div>
           </div>
-
           {/* User Input for Visualization */}
           <form onSubmit={handleGenerateVisualization} className="mb-6">
             <div className="flex gap-2">
@@ -73,10 +72,15 @@ const Index = () => {
               </Button>
             </div>
           </form>
-
-          <Dashboard>
-            <Container />
-          </Dashboard>
+          <div>
+            <div
+              className={`mb-6 grid gap-4 ${listContainer.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}
+            >
+              {listContainer.map((container, index) => (
+                <React.Fragment>{container}</React.Fragment>
+              ))}
+            </div>
+          </div>
         </div>
       </main>
 
