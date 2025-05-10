@@ -38,6 +38,7 @@ export default function Container({ children, prompt, colSpan="col-span-1" }: Pr
     return (
       showContainer && (
         <div className="relative max-h-[50rem] flex flex-col gap-4">
+
           <Button
             variant="ghost"
             size="icon"
@@ -47,8 +48,15 @@ export default function Container({ children, prompt, colSpan="col-span-1" }: Pr
             <X className="h-4 w-4 text-gray-700" />
           </Button>
           <div className="w-full min-h-[30rem] bg-white rounded-xl shadow-sm p-6 animate-fade-in overflow-auto">
-            {graph ? (
-              graph
+            {graph ? ( 
+            <div>
+                <h3 className="text-lg text-gray-700 font-bold">
+                  Custom GenAI Chart
+                </h3>
+                <p className="text-gray-500 pb-10">Dynamically tailored to your needs</p>
+              {graph}
+            </div>
+              
             ) : (
               <div className="flex flex-col items-center justify-center h-full">
                 <CircularProgress />
@@ -73,7 +81,7 @@ export default function Container({ children, prompt, colSpan="col-span-1" }: Pr
         >
           <X className="h-4 w-4 text-gray-700" />
         </Button>
-        <div className="w-full min-h-[30rem] bg-white rounded-xl shadow-sm p-6 animate-fade-in overflow-auto">
+        <div className="w-full min-h-[30rem] bg-white rounded-xl shadow-sm animate-fade-in overflow-auto">
           {loading ? (
             <div className="flex flex-col items-center justify-center h-full">
             <CircularProgress />

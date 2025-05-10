@@ -28,24 +28,54 @@ const Index = () => {
   const [userPrompt, setUserPrompt] = useState("");
   const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef<InstanceType<typeof SpeechRecognition> | null>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [dendrogramCounter, setDendrogramCounter] = useState(0);
+
   const [containers, setContainers] = useState<React.ReactNode[]>([
-    <Container>
+    <Container colSpan="col-span-1">
       <PortfolioChart />
     </Container>,
     <Container>
       <RecentTransactions />
     </Container>,
-    <Container colSpan="col-span-1">
-      <SankeyChart />
-    </Container>,
   ]);
+
+  const createDendrogram = () => {
+    const newContainer = (
+      <Container>
+        
+      </Container>
+    );
+
+    setContainers((prev) => [...prev, newContainer]);
+
+    fetch("http://localhost:8000/api/generate-chart-json", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userPrompt: userPrompt }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setContainers((prev) =>
+      prev.map((container) =>
+        container === newContainer ? (
+          <Container>
+            <Dendrogram data={data} id={`dendrogram-${dendrogramCounter}`}/>
+          </Container>
+        ) : (
+          container
+        )
+      )
+        );
+        setDendrogramCounter((prev) => prev + 1);
+      })
+      .catch(console.error);
+  }
 
   const queries = [
     "Give me an overview of my spendings on food this month.",
     "What are my top spendings this month?",
     "How much did I spend on plants and gardening?",
-    "test",
+    "test"
   ];
 
   const handleGenerateVisualization = (e: React.FormEvent, inputPrompt?:string) => {
@@ -78,11 +108,17 @@ const Index = () => {
           <RadarChart data={radarTestData} />
         </Container>,
         <Container>
-          <Dendrogram data={dendrogramTestData} />
+          <Dendrogram data={dendrogramTestData} id={`dendrogram-${dendrogramCounter}`} />
         </Container>,
       ]);
+      setDendrogramCounter((prev) => prev + 1);
+    } else if (normalizeString(prompt) === normalizeString("Create a view of my transactions this year")) {
+      setContainers((prev) => [...prev, <Container colSpan="col-span-1">
+        <SankeyChart />
+      </Container>])
     } else {
-      setContainers((prev) => [...prev, <Container prompt={prompt} />]);
+      setContainers((prev) => [ ...prev, <Container prompt={userPrompt} />]);
+      createDendrogram();
     }
 
     setUserPrompt(() => "");
@@ -201,7 +237,7 @@ const Index = () => {
           <form onSubmit={handleGenerateVisualization} className="mb-6">
             <div className="flex gap-2">
               <Input
-                placeholder="Enter a prompt to generate visualization (e.g., 'Show my spending by category')"
+                placeholder="Enter a prompt to generate visualization (e.g. 'Give me an overview of my spendings on food this month')"
                 value={userPrompt}
                 onChange={(e) => setUserPrompt(e.target.value)}
                 className="flex-grow border-gray-200 focus:border-traderepublic-purple"
@@ -240,10 +276,10 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <h2 className="text-xl font-bold text-traderepublic-darkpurple">
-              <span className="text-traderepublic-purple">Trade</span>Finance
+              <span className="text-traderepublic-purple">Prompt</span>Republic
             </h2>
             <p className="text-sm text-gray-500">
-              © 2025 TradeFinance. All rights reserved.
+              © 2025 PromptRepublic. All rights reserved.
             </p>
           </div>
 

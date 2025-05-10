@@ -16,13 +16,13 @@ const mockData = [
   { name: "Apr", value: 6100 },
   { name: "May", value: 6800 },
   { name: "Jun", value: 7400 },
-  { name: "Jul", value: 7300 },
+  { name: "Jul", value: 7304 },
 ];
 
 const timeRanges = ["1D", "1W", "1M", "3M", "1Y", "All"];
 
 const PortfolioChart = () => {
-  const [selectedRange, setSelectedRange] = useState("1M");
+  const [selectedRange, setSelectedRange] = useState("1Y");
   const profit = mockData[mockData.length - 1].value - mockData[0].value;
   const profitPercentage = ((profit / mockData[0].value) * 100).toFixed(2);
 
@@ -32,14 +32,14 @@ const PortfolioChart = () => {
         <div>
           <h3 className="text-lg text-gray-500">Portfolio Value</h3>
           <p className="text-3xl font-bold">
-            €{mockData[mockData.length - 1].value.toLocaleString()}
+            ${mockData[mockData.length - 1].value.toLocaleString()}
           </p>
           <div
             className={`flex items-center mt-1 ${profit >= 0 ? "text-traderepublic-green" : "text-traderepublic-red"}`}
           >
             <span className="font-medium">
               {profit >= 0 ? "+" : ""}
-              {profit.toLocaleString()} €
+              {profit.toLocaleString()} $
             </span>
             <span className="ml-2">
               ({profit >= 0 ? "+" : ""}

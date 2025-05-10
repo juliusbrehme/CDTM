@@ -251,6 +251,9 @@ class CustomizedContent extends PureComponent<CustomizedContentProps> {
             textAnchor="middle"
             fill="black"
             fontSize={14}
+            stroke="#505050"
+            strokeWidth={0.5}
+            paintOrder="stroke"
           >
             {name}
           </text>
@@ -276,11 +279,13 @@ export default class TreeMapChart extends PureComponent<TreeMapChartProps> {
     const data = this.props.data || data2;
     
     return (
-      <div className="bg-white rounded-xl shadow-sm p-6 animate-fade-in relative">
+      <div className="bg-white rounded-xl p-6 animate-fade-in relative">
         <div className="flex justify-between items-start mb-4">
           <div>
-            <h3 className="text-lg text-gray-500">TreeMap Chart</h3>
-            <p className="text-3xl font-bold"></p>
+          <h3 className="text-lg text-gray-700 font-bold">
+            Smart Tree Graph
+          </h3>
+          <p className="text-gray-500">Analyze the dimensions of your spendings</p>
             <div
               className={`flex items-center mt-1 ${true ? "text-traderepublic-green" : "text-traderepublic-red"}`}
             >
@@ -290,7 +295,7 @@ export default class TreeMapChart extends PureComponent<TreeMapChartProps> {
           </div>
         </div>
 
-        <div className="h-64 mt-6">
+        <div className="h-64 mt-6 overflow-scroll p-6">
           <ResponsiveContainer width="100%" height="100%">
             <Treemap
               width={400} // Replace with a numeric value or a dynamic calculation
@@ -298,7 +303,7 @@ export default class TreeMapChart extends PureComponent<TreeMapChartProps> {
               data={data}
               dataKey="size"
               fill="transparent"
-              stroke="#fff"
+              stroke="#414141"
               content={<CustomizedContent depth={2} />}
             />
           </ResponsiveContainer>

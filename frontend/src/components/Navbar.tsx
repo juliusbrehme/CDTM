@@ -19,13 +19,17 @@ const Navbar = () => {
         </Link>
         <Link
           to="/"
-          className="text-black-600 hover:text-traderepublic-purple transition-colors font-semibold"
+          className="relative text-gray-600 hover:text-traderepublic-purple transition-colors font-semibold"
         >
           Jarvis
+        {/* Pille mit "New" */}
+        <span className="absolute -bottom-2 -right-4 bg-traderepublic-purple text-white text-xs font-bold px-1 py-0.4 rounded-full opacity-70">
+          New
+        </span>
         </Link>
         <Link
           to="/"
-          className="text-gray-600 hover:text-traderepublic-purple transition-colors font-semibold"
+        className="text-gray-600 hover:text-traderepublic-purple transition-colors font-semibold"
         >
           Invest
         </Link>

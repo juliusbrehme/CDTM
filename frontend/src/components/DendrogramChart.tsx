@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import * as d3 from "d3";
 
 export type TreeNode = {
@@ -25,7 +25,7 @@ export type TreeNode = {
   export const dataT: Tree = {
     id: "a0",
     type: "node",
-    name: "APRIL 25",
+    name: "04/2025",
     value: 234,
     color: '#F8C12D',
     children: [
@@ -67,7 +67,7 @@ export type TreeNode = {
   };
   
 
-const MARGIN = { top: 35, right: 10, bottom: 10, left: 35 };
+const MARGIN = { top: 35, right: 150, bottom: 10, left: 35 };
 
 
 
@@ -75,9 +75,10 @@ type DendrogramProps = {
   width?: number;
   height?: number;
   data?: Tree;
+  id?: string;
 };
 
-export const Dendrogram = ({ width = 450, height= 550, data = dataT }: DendrogramProps) => {
+export const Dendrogram = ({ width = 600, height= 550, data = dataT, id}: DendrogramProps) => {
   const boundsWidth = width - MARGIN.right - MARGIN.left;
   const boundsHeight = height - MARGIN.top - MARGIN.bottom;
 
@@ -88,7 +89,7 @@ export const Dendrogram = ({ width = 450, height= 550, data = dataT }: Dendrogra
 
 
   const mouseover = function(node: any , d) {
-    const tooltipElement = document.getElementById("tooltip");
+    const tooltipElement = document.getElementById("tooltip" + id);
     if (tooltipElement) {
       tooltipElement.innerHTML = `${node.data.name} : ${node.data.value} $`;
       tooltipElement.style.opacity = "1";
@@ -103,7 +104,7 @@ export const Dendrogram = ({ width = 450, height= 550, data = dataT }: Dendrogra
   }
 
   var mouseleave = function(node, d) {
-    const tooltipElement = document.getElementById("tooltip");
+    const tooltipElement = document.getElementById("tooltip" + id);
     if (tooltipElement) {
       tooltipElement.style.opacity = "0";
     }
@@ -156,12 +157,18 @@ export const Dendrogram = ({ width = 450, height= 550, data = dataT }: Dendrogra
     if (!node.parent) {
       return;
     }
+
+    const strokeWidth = Math.max(1, node.data.value / 40); // Adjust the divisor (10) to scale the thickness
+
+
     return (
       <g key={node.data.id}>
       <path
         key={node.id}
         fill="none"
         stroke="grey"
+        strokeWidth={strokeWidth}
+        
         d={horizontalLinkGenerator({
           source: [node.parent.y, node.parent.x],
           target: [node.y, node.x],
@@ -174,7 +181,8 @@ export const Dendrogram = ({ width = 450, height= 550, data = dataT }: Dendrogra
           fontSize={12}
           textAnchor="middle"
           alignmentBaseline="middle"
-          fill="grey">
+          fill="black"
+          fontWeight={500}>
           {node.data.value}$
         </text>
       )}
@@ -190,11 +198,14 @@ export const Dendrogram = ({ width = 450, height= 550, data = dataT }: Dendrogra
 
   return (
     
-    <div className="mb-4 items-center relative"> 
-          <h3 className="text-lg text-gray-500">Dendogram Chart</h3>
+    <div className="mb-4 w-full p-6 items-center relative overflow-scroll animate-fade-in mx-auto"> 
+            <h3 className="text-lg text-gray-700 font-bold">
+              Dynamic Mindmap
+            </h3>
+            <p className="text-gray-500">Get deep insights to your data</p>
         
 
-            <svg className="w-full p-15" height={height}>   
+            <svg className="p-15" width={width} height={height}>   
                 <g transform={`translate(${[MARGIN.left, MARGIN.top].join(",")})`}>
                 {allEdges}
                 {allNodes}
@@ -204,8 +215,8 @@ export const Dendrogram = ({ width = 450, height= 550, data = dataT }: Dendrogra
             </svg>
       
      
-            <span
-        id="tooltip"
+        <span
+        id={"tooltip" + id}
         style={{
           position: "absolute",
           opacity: 0,
