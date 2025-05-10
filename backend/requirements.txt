@@ -1,3 +1,5 @@
 fastapi[standard]
+openai
+dotenv
 pandas
 uvicorn

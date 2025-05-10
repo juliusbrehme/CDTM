@@ -66,10 +66,8 @@ const RecentTransactions = () => {
                 {transaction.currency?.[0] ?? "?"}
               </div>
               <div className="ml-3">
-                <div className="font-medium">User {transaction.userId}</div>
-                <div className="text-xs text-gray-500">
-                  {transaction.bookingDate}
-                </div>
+                <div className="font-medium">{transaction.type}</div>
+                <div className="text-xs text-gray-500">{transaction.bookingDate}</div>
               </div>
             </div>
 
@@ -94,7 +92,7 @@ const RecentTransactions = () => {
                       : "bg-gray-100 text-gray-800"
                 }`}
               >
-                {transaction.type}
+                {transaction.category ?? "Unknown"}
               </span>
             </div>
           </div>

@@ -24,7 +24,7 @@ const Index = () => {
     </Container>,
   ]);
 
-  const handleGenerateVisualization = (e: React.FormEvent) => {
+  const handleGenerateVisualization = async (e: React.FormEvent) => {
     e.preventDefault();
     setUserPrompt(() => "");
     setContainers((prev) => [
