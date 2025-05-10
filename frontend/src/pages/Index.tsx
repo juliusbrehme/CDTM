@@ -30,6 +30,7 @@ const Index = () => {
     "Give me an overview of my spendings on food this month.",
     "What are my top spendings this month?",
     "How much did I spend on plants and gardening?",
+    "test"
   ];
   const handleGenerateVisualization = (e: React.FormEvent) => {
     e.preventDefault();
