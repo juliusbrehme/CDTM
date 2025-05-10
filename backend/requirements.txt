@@ -1,1 +1,8 @@
 fastapi[standard]
+uvicorn
+plotly
+pandas
+react-plotly
+iso18245
+json
+datetime
