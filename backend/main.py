@@ -44,6 +44,8 @@ def load_data():
         sliced_df["bookingDate"] = sliced_df["bookingDate"].dt.strftime('%Y-%m-%d')
 
         bankingDataframe=sliced_df
+        print(bankingDataframe["category"].unique())
+
         trading_temp = pd.read_csv("./data/trading_sample_data.csv")
     except Exception as e:
         print(f"Failed to load data: {e}")
@@ -91,6 +93,23 @@ side referes to credit(money booked onto the account) or debit (money deducted f
 Type is the type of transaction, options are CARD(Use of the TR Debit Card), CARD_ORDER(Ordering of a TR Debit Card), EARNINGS(Dividends, bond coupon payments, etc.),INTEREST, OTHER, PAYIN, PAYOUT, TRADING
 Category is the category of spending given as strings. 
 Make sure the chart spec filters by the correct time range given in the query. And make the graph interactable
+The options for spending categories are: 'Lodging – Hotels, Motels, Resorts, Central Reservation Services (Not Elsewhere Classified)'
+ 'Grocery Stores and Supermarkets' 'Unknown'
+ 'Direct Marketing – Continuity/Subscription Merchant'
+ 'Miscellaneous and Specialty Retail Shops'
+ 'Financial Institutions – Automated Cash Disbursements'
+ 'Drug Stores and Pharmacies' 'Money Transfer'
+ 'Direct Marketing – Other Direct Marketers (Not Elsewhere Classified)'
+ 'Service Stations (With or without Ancillary Services)'
+ 'Eating Places and Restaurants' 'Automotive Parts and Accessories Stores'
+ 'Cable, Satellite and Other Pay Television/Radio/Streaming Services'
+ 'Variety Stores'
+ 'Antique Shops – Sales, Repairs, and Restoration Services'
+ 'Pet Shops, Pet Foods and Supplies Stores' 'Home Supply Warehouse Stores'
+ 'Furniture, Home Furnishings, and Equipment Stores, Except Appliances'
+ 'Bakeries' 'Package Stores – Beer, Wine, and Liquor'
+ 'Lumber and Building Materials Stores' 'Hardware Stores'
+ 'Nurseries and Lawn and Garden Supply Stores'
 Respond ONLY with valid Vega-Lite JSON and start with the curly bracket. No explanation and make sure it's JSON parseable
 
 User prompt: "{prompt.userPrompt}"
