@@ -204,3 +204,91 @@ User prompt: "{prompt.userPrompt}"
     return chart_spec
 
 
+@app.post("/api/generate-chart-json")
+async def generate_chart_json(prompt: Prompt):
+    # Define the system prompt for the LLM
+    bankingDataframe['group'] = bankingDataframe['mcc'].apply(map_mcc_to_grouping)
+    data_str = bankingDataframe[["bookingDate", "amount", "category", "group"]].astype(str).to_string(index=False)
+    print(data_str)
+    system_prompt = """
+You are a data visualization expert and this is your data:
+""" + data_str + """
+ Generate a JSON file in this structure based on the user prompt:
+{
+    "id": "<Unique ID of chars, e.g. 'absdfksdfjskfj>",
+    "type": "node",
+    "name": "What the prompt asks for, e.g. 'Spendings for Pets'",
+    "value": <Total value, calculated from all children>,
+    "color": "<Hex color code>",
+    "children": [
+      {
+        "type": "node",
+        "name": "<Group name>",
+        "id": "<Unique ID>",
+        "value": <SUM of leaf values>,
+        "color": "<Hex color code>",
+        "children": [
+          {
+            "type": "leaf",
+            "name": "<Category: value $ (date)>",
+            "value": <Leaf value>,
+            "id": "<Unique ID>",
+            "color": "<Hex color code>"
+          }
+        ]
+      },
+      {
+        "type": "node",
+        "name": "<Other relevant group>",
+        "id": "<Unique ID>",
+        "value": <SUM of leaf values>,
+        "color": "<Hex color code>",
+        "children": [
+          {
+            "type": "leaf",
+            "name": "<Category: value $ (date)>",
+            "value": <Leaf value>,
+            "id": "<Unique ID>",
+            "color": "<Hex color code>"
+          }
+        ]
+      }
+    ]
+  }
+}
+Use this color palette: '#8889DD', '#9597E4', '#8DC77B', '#A5D297', '#E2CF45', '#F8C12D'.
+Based on the given prompt, extract the most relevant information and search for relevant groups and categories.
+Then follow the structure above and generate a JSON file.
+Make sure to use the correct data types and formats.
+VALID JSON ONLY, NO EXPLANATION, start with a { and end with a }. This is the user prompt:
+""" + prompt.userPrompt + """JSON:"""
+
+    # Call the OpenAI API
+    client = OpenAI(api_key="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")
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": system_prompt},
+        ]
+    )
+
+    print(system_prompt)
+
+    # Parse the response
+    chart_spec_str = response.choices[0].message.content
+    print(chart_spec_str)
+    try:
+        chart_spec = json.loads(chart_spec_str)
+        #print(json.dumps(chart_spec, indent=2))
+
+    except json.JSONDecodeError as e:
+        print("Failed to parse JSON. Response:", chart_spec_str)
+        raise e
+        
+    return chart_spec
+
+
+
+
+
+

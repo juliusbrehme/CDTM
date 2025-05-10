@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import * as d3 from "d3";
 
 export type TreeNode = {
@@ -67,7 +67,7 @@ export type TreeNode = {
   };
   
 
-const MARGIN = { top: 35, right: 10, bottom: 10, left: 35 };
+const MARGIN = { top: 35, right: 150, bottom: 10, left: 35 };
 
 
 
@@ -75,9 +75,10 @@ type DendrogramProps = {
   width?: number;
   height?: number;
   data?: Tree;
+  id?: string;
 };
 
-export const Dendrogram = ({ width = 450, height= 550, data = dataT }: DendrogramProps) => {
+export const Dendrogram = ({ width = 600, height= 550, data = dataT, id}: DendrogramProps) => {
   const boundsWidth = width - MARGIN.right - MARGIN.left;
   const boundsHeight = height - MARGIN.top - MARGIN.bottom;
 
@@ -88,7 +89,7 @@ export const Dendrogram = ({ width = 450, height= 550, data = dataT }: Dendrogra
 
 
   const mouseover = function(node: any , d) {
-    const tooltipElement = document.getElementById("tooltip");
+    const tooltipElement = document.getElementById("tooltip" + id);
     if (tooltipElement) {
       tooltipElement.innerHTML = `${node.data.name} : ${node.data.value} $`;
       tooltipElement.style.opacity = "1";
@@ -103,7 +104,7 @@ export const Dendrogram = ({ width = 450, height= 550, data = dataT }: Dendrogra
   }
 
   var mouseleave = function(node, d) {
-    const tooltipElement = document.getElementById("tooltip");
+    const tooltipElement = document.getElementById("tooltip" + id);
     if (tooltipElement) {
       tooltipElement.style.opacity = "0";
     }
@@ -190,11 +191,11 @@ export const Dendrogram = ({ width = 450, height= 550, data = dataT }: Dendrogra
 
   return (
     
-    <div className="mb-4 items-center relative"> 
+    <div className="mb-4 w-full p-6 items-center relative overflow-scroll animate-fade-in mx-auto"> 
           <h3 className="text-lg text-gray-500">Dendogram Chart</h3>
         
 
-            <svg className="w-full p-15" height={height}>   
+            <svg className="p-15" width={width} height={height}>   
                 <g transform={`translate(${[MARGIN.left, MARGIN.top].join(",")})`}>
                 {allEdges}
                 {allNodes}
@@ -204,8 +205,8 @@ export const Dendrogram = ({ width = 450, height= 550, data = dataT }: Dendrogra
             </svg>
       
      
-            <span
-        id="tooltip"
+        <span
+        id={"tooltip" + id}
         style={{
           position: "absolute",
           opacity: 0,

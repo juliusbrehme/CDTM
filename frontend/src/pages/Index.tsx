@@ -29,8 +29,10 @@ const Index = () => {
   const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef<InstanceType<typeof SpeechRecognition> | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [dendrogramCounter, setDendrogramCounter] = useState(0);
+
   const [containers, setContainers] = useState<React.ReactNode[]>([
-    <Container>
+    <Container colSpan="col-span-2">
       <PortfolioChart />
     </Container>,
     <Container>
@@ -40,6 +42,38 @@ const Index = () => {
       <SankeyChart />
     </Container>,
   ]);
+
+  const createDendrogram = () => {
+    const newContainer = (
+      <Container>
+        
+      </Container>
+    );
+
+    setContainers((prev) => [...prev, newContainer]);
+
+    fetch("http://localhost:8000/api/generate-chart-json", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userPrompt: userPrompt }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setContainers((prev) =>
+      prev.map((container) =>
+        container === newContainer ? (
+          <Container>
+            <Dendrogram data={data} id={`dendrogram-${dendrogramCounter}`}/>
+          </Container>
+        ) : (
+          container
+        )
+      )
+        );
+        setDendrogramCounter((prev) => prev + 1);
+      })
+      .catch(console.error);
+  }
 
   const queries = [
     "Give me an overview of my spendings on food this month.",
@@ -78,11 +112,13 @@ const Index = () => {
           <RadarChart data={radarTestData} />
         </Container>,
         <Container>
-          <Dendrogram data={dendrogramTestData} />
+          <Dendrogram data={dendrogramTestData} id={`dendrogram-${dendrogramCounter}`} />
         </Container>,
       ]);
+      setDendrogramCounter((prev) => prev + 1);
     } else {
-      setContainers((prev) => [...prev, <Container prompt={prompt} />]);
+      setContainers((prev) => [...prev, <Container prompt={userPrompt} />]);
+      createDendrogram();
     }
 
     setUserPrompt(() => "");
