@@ -10,13 +10,17 @@ interface Props {
   colSpan?: string;
 }
 
-export default function Container({ children, prompt, colSpan="col-span-1" }: Props) {
+export default function Container({
+  children,
+  prompt,
+  colSpan = "col-span-1",
+}: Props) {
   const [showContainer, setShowContainer] = useState(true);
   const [graph, setGraph] = useState<ReactNode | null>(null);
 
   useEffect(() => {
     if (prompt) {
-      fetch("http://localhost:8000/api/generate-chart", {
+      fetch("https://cdtm.onrender.com/api/generate-chart", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userPrompt: prompt }),

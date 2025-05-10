@@ -39,7 +39,7 @@ const RecentTransactions = () => {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/transactions")
+    fetch("https://cdtm.onrender.com/api/transactions")
       .then((res) => res.json())
       .then((data) => setTransactions(data))
       .catch(console.error);
@@ -67,7 +67,9 @@ const RecentTransactions = () => {
               </div>
               <div className="ml-3">
                 <div className="font-medium">{transaction.type}</div>
-                <div className="text-xs text-gray-500">{transaction.bookingDate}</div>
+                <div className="text-xs text-gray-500">
+                  {transaction.bookingDate}
+                </div>
               </div>
             </div>
 
