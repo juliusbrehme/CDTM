@@ -17,7 +17,6 @@ app.add_middleware(
 def read_transactions():
     df = pd.read_csv("./data/banking_sample_data.csv")
     df = df.replace([float('inf'), float('-inf')], None).fillna('')
-    # print(df.to_dict(orient="records"))
     return df.to_dict(orient="records")
 
 @app.get("/")

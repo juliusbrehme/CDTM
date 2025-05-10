@@ -5,11 +5,21 @@ import Navbar from "@/components/Navbar";
 import { PieChart, Bell } from "lucide-react";
 import Container from "@/components/Container.tsx";
 import React from "react";
+import PortfolioChart from "@/components/PortfolioChart.tsx";
+import RecentTransactions from "@/components/RecentTransactions.tsx";
+import AssetDistribution from "@/components/AssetDistribution.tsx";
 
 const Index = () => {
   const [userPrompt, setUserPrompt] = useState("");
 
-  const [containers, setContainers] = useState<React.ReactNode[]>([]);
+  const [containers, setContainers] = useState<React.ReactNode[]>([
+    <Container>
+      <PortfolioChart />
+    </Container>,
+    <Container>
+      <RecentTransactions />
+    </Container>,
+  ]);
 
   const handleGenerateVisualization = (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,7 +84,7 @@ const Index = () => {
           </form>
           <div>
             <div
-              className={`mb-6 grid gap-4 ${listContainer.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}
+              className={`mb-6 flex-row grid gap-4 ${listContainer.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}
             >
               {listContainer.map((container, index) => (
                 <React.Fragment>{container}</React.Fragment>

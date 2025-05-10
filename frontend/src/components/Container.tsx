@@ -20,7 +20,7 @@ export default function Container({ children }: Props) {
         >
           <X className="h-4 w-4 text-gray-700" />
         </Button>
-        <div className="bg-white rounded-xl shadow-sm p-6 animate-fade-in">
+        <div className="bg-white rounded-xl shadow-sm p-6 animate-fade-in h-96 overflow-auto">
           {children}
         </div>
       </div>
