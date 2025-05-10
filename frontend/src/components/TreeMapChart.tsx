@@ -182,6 +182,32 @@ const COLORS = [
 ];
 
 class CustomizedContent extends PureComponent<CustomizedContentProps> {
+  handleMouseOver = (event: React.MouseEvent<SVGRectElement>, name: string, size?: number, x?:number, y?:number) => {
+    const tooltip = document.getElementById("treemap-tooltip");
+    const target = event.currentTarget;
+    if (target) {
+      target.style.stroke = "black";
+      target.style.strokeWidth = "4px"
+    }
+    if (tooltip) {
+      tooltip.style.opacity = "1";
+      tooltip.style.left = `${x}px`;
+      tooltip.style.top = `${y + 30}px`;
+      tooltip.innerHTML = `${name}: ${size ? size + "$" : "N/A"}`;
+    }
+  };
+
+  handleMouseLeave = (event: React.MouseEvent<SVGRectElement>) => {
+    const tooltip = document.getElementById("treemap-tooltip");
+    const target = event.currentTarget;
+    if (target) {
+      target.style.stroke = "none";
+      target.style.strokeWidth = "0px";
+    }
+    if (tooltip) {
+      tooltip.style.opacity = "0";
+    }
+  };
   render() {
     const {
       root,
@@ -214,6 +240,8 @@ class CustomizedContent extends PureComponent<CustomizedContentProps> {
             strokeWidth: 2 / (depth + 1e-10),
             strokeOpacity: 1 / (depth + 1e-10),
           }}
+          onMouseOver={(e) => this.handleMouseOver(e, name, size, x, y)}
+          onMouseLeave={this.handleMouseLeave}
         />
         {depth !== 1 ? (
           <text
@@ -245,9 +273,9 @@ class CustomizedContent extends PureComponent<CustomizedContentProps> {
 export default class TreeMapChart extends PureComponent<TreeMapChartProps> {
   render() {
     const data = this.props.data || data2;
-    console.log("TreeMap data", data);
+    
     return (
-      <div className="bg-white rounded-xl shadow-sm p-6 animate-fade-in">
+      <div className="bg-white rounded-xl shadow-sm p-6 animate-fade-in relative">
         <div className="flex justify-between items-start mb-4">
           <div>
             <h3 className="text-lg text-gray-500">TreeMap Chart</h3>
@@ -274,6 +302,18 @@ export default class TreeMapChart extends PureComponent<TreeMapChartProps> {
             />
           </ResponsiveContainer>
         </div>
+        <span
+        id="treemap-tooltip"
+        style={{
+          position: "absolute",
+          opacity: 0,
+          backgroundColor: "#f3f3f3",
+          border: "1px solid #d2d2d2",
+          borderRadius: "5px",
+          padding: "10px",
+          pointerEvents: "none",
+          transition: "opacity 0.2s",
+        }}></span>
       </div>
     );
   }

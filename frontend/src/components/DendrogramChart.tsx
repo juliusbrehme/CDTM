@@ -85,25 +85,17 @@ export const Dendrogram = ({ width = 450, height= 550, data = dataT }: Dendrogra
     return d3.hierarchy(data).sum((d) => d.value);
   }, [data]);
 
-  var Tooltip = d3.select("#div_template")
-    
-    .style("opacity", 0)
-    .attr("class", "tooltip")
-    .style("background-color", "#f3f3f3")
-    .style("border", "solid")
-    .style("border-color", "#d2d2d2")
-    .style("border-width", "1px")
-    .style("border-radius", "5px")
-    .style("padding", "20px")
 
-  var mouseover = function(node: any , d) {
-    
-    Tooltip
-      .html(node.data.name + " : " + node.data.value + " $")
-      .style("opacity", 1)
-      .style("position", "absolute")
-      .style("left", node.y + "px")
-      .style("top", node.x + "px")
+
+  const mouseover = function(node: any , d) {
+    const tooltipElement = document.getElementById("tooltip");
+    if (tooltipElement) {
+      tooltipElement.innerHTML = `${node.data.name} : ${node.data.value} $`;
+      tooltipElement.style.opacity = "1";
+      tooltipElement.style.position = "absolute";
+      tooltipElement.style.left = `${node.y}px`;
+      tooltipElement.style.top = `${node.x}px`;
+    }
     d3.select("#" + node.data.id)
       .style("stroke", "grey")
       .style("opacity", 1)
@@ -111,8 +103,10 @@ export const Dendrogram = ({ width = 450, height= 550, data = dataT }: Dendrogra
   }
 
   var mouseleave = function(node, d) {
-    Tooltip
-      .style("opacity", 0)
+    const tooltipElement = document.getElementById("tooltip");
+    if (tooltipElement) {
+      tooltipElement.style.opacity = "0";
+    }
     d3.select("#" + node.data.id)
       .style("stroke", "none")
   }
@@ -196,7 +190,7 @@ export const Dendrogram = ({ width = 450, height= 550, data = dataT }: Dendrogra
 
   return (
     
-    <div className="mb-4 items-center"> 
+    <div className="mb-4 items-center relative"> 
           <h3 className="text-lg text-gray-500">Dendogram Chart</h3>
         
 
@@ -210,7 +204,18 @@ export const Dendrogram = ({ width = 450, height= 550, data = dataT }: Dendrogra
             </svg>
       
      
-            <span id="div_template"></span>
+            <span
+        id="tooltip"
+        style={{
+          position: "absolute",
+          opacity: 0,
+          backgroundColor: "#f3f3f3",
+          border: "1px solid #d2d2d2",
+          borderRadius: "5px",
+          padding: "10px",
+          pointerEvents: "none",
+          transition: "opacity 0.2s",
+        }}></span>
         </div>
     
     
