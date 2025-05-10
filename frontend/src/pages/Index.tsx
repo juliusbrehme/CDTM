@@ -201,7 +201,7 @@ const Index = () => {
           <form onSubmit={handleGenerateVisualization} className="mb-6">
             <div className="flex gap-2">
               <Input
-                placeholder="Enter a prompt to generate visualization (e.g., 'Show my spending by category')"
+                placeholder="Enter a prompt to generate visualization (e.g. 'Give me an overview of my spendings on food this month')"
                 value={userPrompt}
                 onChange={(e) => setUserPrompt(e.target.value)}
                 className="flex-grow border-gray-200 focus:border-traderepublic-purple"

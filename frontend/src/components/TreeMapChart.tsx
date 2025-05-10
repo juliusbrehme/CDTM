@@ -251,6 +251,9 @@ class CustomizedContent extends PureComponent<CustomizedContentProps> {
             textAnchor="middle"
             fill="black"
             fontSize={14}
+            stroke="#505050"
+            strokeWidth={0.5}
+            paintOrder="stroke"
           >
             {name}
           </text>
