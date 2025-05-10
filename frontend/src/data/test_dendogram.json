@@ -48,8 +48,8 @@
                         "id": "a10",
                         "color": "#9597E4",
                         "children": [
-                            { "type": "leaf", "name": "Chips", "value": 20, "id": "a11", "color": "#E2CF45" },
-                            { "type": "leaf", "name": "Candy", "value": 30,  "id": "a12", "color": "#E2CF45" }
+                            { "type": "leaf", "name": "Chips", "value": 20, "id": "a11", "color": "#A58912" },
+                            { "type": "leaf", "name": "Candy", "value": 30,  "id": "a12", "color": "#A58912" }
                         ]
                     },
                     {
@@ -59,8 +59,8 @@
                         "id": "a13",
                         "color": "#9597E4",
                         "children": [
-                            { "type": "leaf", "name": "Soda", "value": 15, "id": "a14", "color": "#E2CF45" },
-                            { "type": "leaf", "name": "Juice", "value": 15,  "id": "a15", "color": "#E2CF45" }
+                            { "type": "leaf", "name": "Soda", "value": 15, "id": "a14", "color": "#ab3bb3" },
+                            { "type": "leaf", "name": "Juice", "value": 15,  "id": "a15", "color": "#ab3bb3" }
                         ]
                     }
                     

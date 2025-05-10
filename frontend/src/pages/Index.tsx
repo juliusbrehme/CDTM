@@ -46,12 +46,13 @@ const Index = () => {
       const dendrogram_testData = result_dendrogram?.data;
       setContainers((prev) => [
         ...prev,
-        <Container>
-          <RadarChart data={radar_testData}/>
-        </Container>,
-        <Container>
+
+        <Container col_span="col-span-2">
           <TreeMapChart data={tree_testData}/>  
         </Container>,
+        <Container>
+        <RadarChart data={radar_testData}/>
+      </Container>,
         <Container>
           <Dendrogram data={dendrogram_testData}/>
         </Container>,
@@ -122,8 +123,7 @@ const Index = () => {
           </form>
           <div>
             <div
-              className={`mb-6 flex-row grid gap-4 ${listContainer.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}
-            >
+              className={`mb-6 flex-row grid gap-4 ${listContainer.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}>
               {listContainer.map((container, index) => (
                 <React.Fragment>{container}</React.Fragment>
               ))}
