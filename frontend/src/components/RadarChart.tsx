@@ -57,7 +57,7 @@ export default class RadarChartContainer extends PureComponent<RadarChartProps> 
   render() {
     const data = this.props.data || data2;
     return (
-    <div className="bg-white rounded-xl shadow-sm p-6 animate-fade-in">
+    <div className="bg-white rounded-xl p-6 animate-fade-in">
       <div className="flex justify-between items-start mb-4">
         <div>
           <h3 className="text-lg text-gray-500">Radar Chart</h3>

@@ -36,7 +36,7 @@ const Index = () => {
     <Container>
       <RecentTransactions />
     </Container>,
-    <Container colSpan="col-span-2">
+    <Container colSpan="col-span-1">
       <SankeyChart />
     </Container>  ]);
 
