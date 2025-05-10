@@ -5,3 +5,7 @@ pandas
 uvicorn
 iso18245
 setuptools
+plotly
+react-plotly
+json
+datetime
