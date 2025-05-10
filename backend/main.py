@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 import json
 import threading
 from datetime import datetime
+import re
 
 app = FastAPI()
 
@@ -45,7 +46,6 @@ def load_data():
         sliced_df["bookingDate"] = sliced_df["bookingDate"].dt.strftime('%Y-%m-%d')
 
         bankingDataframe=sliced_df
-        print(bankingDataframe["category"].unique())
 
         trading_temp = pd.read_csv("./data/trading_sample_data.csv")
     except Exception as e:
@@ -159,32 +159,16 @@ bookingDate referes to the date that the transaction occured in the yyyy-mm-dd f
 side referes to credit(money booked onto the account) or debit (money deducted from the account).
 Type is the type of transaction, options are CARD(Use of the TR Debit Card), CARD_ORDER(Ordering of a TR Debit Card), EARNINGS(Dividends, bond coupon payments, etc.),INTEREST, OTHER, PAYIN, PAYOUT, TRADING
 Category is the category of spending given as strings. 
-Make sure the chart spec filters by the correct time range given in the query. And make the graph interactable
-The options for spending categories are: 'Lodging – Hotels, Motels, Resorts, Central Reservation Services (Not Elsewhere Classified)'
- 'Grocery Stores and Supermarkets' 'Unknown'
- 'Direct Marketing – Continuity/Subscription Merchant'
- 'Miscellaneous and Specialty Retail Shops'
- 'Financial Institutions – Automated Cash Disbursements'
- 'Drug Stores and Pharmacies' 'Money Transfer'
- 'Direct Marketing – Other Direct Marketers (Not Elsewhere Classified)'
- 'Service Stations (With or without Ancillary Services)'
- 'Eating Places and Restaurants' 'Automotive Parts and Accessories Stores'
- 'Cable, Satellite and Other Pay Television/Radio/Streaming Services'
- 'Variety Stores'
- 'Antique Shops – Sales, Repairs, and Restoration Services'
- 'Pet Shops, Pet Foods and Supplies Stores' 'Home Supply Warehouse Stores'
- 'Furniture, Home Furnishings, and Equipment Stores, Except Appliances'
- 'Bakeries' 'Package Stores – Beer, Wine, and Liquor'
- 'Lumber and Building Materials Stores' 'Hardware Stores'
- 'Nurseries and Lawn and Garden Supply Stores'
-Respond ONLY with valid Vega-Lite JSON and start with the curly bracket. No explanation and make sure it's JSON parseable
+Make sure the chart spec filters by the correct time range given in the query. And make the graph interactable and colorful and include a title
+The options for spending categories are: Health, Pet food & Veterinary, Restaurants, Groceries, Agriculture, Miscellaneous, Travel & Transportation, Services, Leisure & Entertainment, IT & Electronics, Retail, Education & Books, Finance & Insurance
+Respond ONLY with valid Vega-Lite JSON and start with the curly bracket. No explanation and make sure it's JSON parseable. Don't sort by date if none is given in the chart spec
 
 User prompt: "{prompt.userPrompt}"
     """
     client = OpenAI(api_key="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")
 
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-4o",
         messages=[
             {"role": "system", "content": system_prompt},
         ]
@@ -193,14 +177,16 @@ User prompt: "{prompt.userPrompt}"
     chart_spec_str = response.choices[0].message.content
     print(chart_spec_str)
     try:
-        chart_spec = json.loads(chart_spec_str)
-        chart_spec["data"] = {"values": bankingDataframe.to_dict(orient="records")} 
+        cleaned_response = re.sub(r'```json|```', '', chart_spec_str)
+        cleaned_response = json.loads(cleaned_response)
+        cleaned_response["data"] = {"values": bankingDataframe.to_dict(orient="records")} 
+        print(json.dumps(cleaned_response, indent=2))
         #print(json.dumps(chart_spec, indent=2))
 
     except json.JSONDecodeError as e:
         print("Failed to parse JSON. Response:", chart_spec_str)
         raise e
         
-    return chart_spec
+    return cleaned_response
 
 
