@@ -28,7 +28,6 @@ const Index = () => {
   const [userPrompt, setUserPrompt] = useState("");
   const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef<InstanceType<typeof SpeechRecognition> | null>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [dendrogramCounter, setDendrogramCounter] = useState(0);
 
   const [containers, setContainers] = useState<React.ReactNode[]>([
@@ -37,9 +36,6 @@ const Index = () => {
     </Container>,
     <Container>
       <RecentTransactions />
-    </Container>,
-    <Container colSpan="col-span-1">
-      <SankeyChart />
     </Container>,
   ]);
 
@@ -79,7 +75,7 @@ const Index = () => {
     "Give me an overview of my spendings on food this month.",
     "What are my top spendings this month?",
     "How much did I spend on plants and gardening?",
-    "test",
+    "test"
   ];
 
   const handleGenerateVisualization = (e: React.FormEvent, inputPrompt?:string) => {
@@ -116,6 +112,10 @@ const Index = () => {
         </Container>,
       ]);
       setDendrogramCounter((prev) => prev + 1);
+    } else if (normalizeString(prompt) === normalizeString("Create a view of my transactions this year")) {
+      setContainers((prev) => [...prev, <Container colSpan="col-span-1">
+        <SankeyChart />
+      </Container>])
     } else {
       setContainers((prev) => [...prev, <Container prompt={userPrompt} />]);
       createDendrogram();

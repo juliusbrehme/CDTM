@@ -129,10 +129,11 @@ const SankeyChart: React.FC = () => {
   }, []);
 
   return (
-    <div className="mb-4 items-center animate-fade-in mx-auto">
-      <h3 className="text-lg text-gray-500">
+    <div className="mb-4 items-center animate-fade-in pt-6 mx-auto">
+      <h3 className="text-lg text-gray-700 font-bold">
         Transaction Flow
       </h3>
+      <p className="text-gray-500">Description</p>
       <Plot
         data={[
           {
