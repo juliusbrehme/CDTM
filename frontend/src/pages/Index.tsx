@@ -45,7 +45,6 @@ const Index = () => {
       const dendrogramTestData = resultDendrogram?.data;
       setContainers((prev) => [
         ...prev,
-
         <Container colSpan="col-span-2">
           <TreeMapChart data={treeTestData} />
         </Container>,

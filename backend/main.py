@@ -8,6 +8,7 @@ import os
 from dotenv import load_dotenv
 import json
 
+
 app = FastAPI()
 
 # Allow CORS for frontend development
@@ -34,12 +35,12 @@ def map_mcc_to_category(mcc_code):
 
 @app.get("/api/transactions")
 def read_transactions():
-    df = pd.read_csv("./data/banking_sample_data.csv")
+    cwd = os.getcwd()
+    df = pd.read_csv(cwd + "/data/banking_sample_data.csv")
     sliced_df = df.iloc[310:370]
     sliced_df = sliced_df.replace([float('inf'), float('-inf')], None).fillna('')
     sliced_df['side'] = sliced_df['side'].str.strip().str.lower()
     sliced_df['category'] = sliced_df['mcc'].apply(map_mcc_to_category)
-    #sliced_df["bookingDate"] = pd.to_datetime(sliced_df["bookingDate"])
     print(sliced_df)
     return sliced_df.to_dict(orient="records")
 
