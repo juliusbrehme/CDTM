@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
-import { Bell, PieChart } from "lucide-react";
+import { Bell, PieChart, Mic } from "lucide-react";
 import Container from "@/components/Container.tsx";
 import PortfolioChart from "@/components/PortfolioChart.tsx";
 import RecentTransactions from "@/components/RecentTransactions.tsx";
@@ -15,9 +15,20 @@ import TreeJSON from "@/data/test_tree.json";
 import DendrogramJSON from "@/data/test_dendogram.json";
 import SankeyChart from "@/components/SankeyChart";
 
+declare global {
+  interface Window {
+    webkitSpeechRecognition: any;
+  }
+}
+
+const SpeechRecognition = window.webkitSpeechRecognition || (window as any).SpeechRecognition;
+
+
 const Index = () => {
   const [userPrompt, setUserPrompt] = useState("");
-
+  const [isListening, setIsListening] = useState(false);
+  const recognitionRef = useRef<InstanceType<typeof SpeechRecognition> | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [containers, setContainers] = useState<React.ReactNode[]>([
     <Container>
       <PortfolioChart />
@@ -27,29 +38,39 @@ const Index = () => {
     </Container>,
     <Container colSpan="col-span-1">
       <SankeyChart />
-    </Container>  ]);
+    </Container>,
+  ]);
 
   const queries = [
     "Give me an overview of my spendings on food this month.",
     "What are my top spendings this month?",
     "How much did I spend on plants and gardening?",
-    "test"
+    "test",
   ];
-  const handleGenerateVisualization = (e: React.FormEvent) => {
+
+  const handleGenerateVisualization = (e: React.FormEvent, inputPrompt?:string) => {
     e.preventDefault();
-    if (queries.includes(userPrompt)) {
-      const resultRadar = RadarJSON.find((item) => item.query === userPrompt);
+    let prompt = userPrompt
+    if(inputPrompt) {
+      prompt = inputPrompt;
+    }
+
+    const normalizeString = (str: string) => {
+      return str.trim().toLowerCase().replace(/[.,!?]$/, ""); // Entfernt Satzzeichen am Ende und macht den String klein
+    };
+
+    if (queries.some((query) => normalizeString(query) === normalizeString(prompt))) {
+      const resultRadar = RadarJSON.find((item) => normalizeString(item.query) === normalizeString(prompt));
       const radarTestData = resultRadar?.data;
-      const resultTree = TreeJSON.find((item) => item.query === userPrompt);
+
+      const resultTree = TreeJSON.find((item) => normalizeString(item.query) === normalizeString(prompt));
       const treeTestData = resultTree?.data;
 
-      const resultDendrogram = DendrogramJSON.find(
-        (item) => item.query === userPrompt,
-      );
+      const resultDendrogram = DendrogramJSON.find((item) => normalizeString(item.query) === normalizeString(prompt));
       const dendrogramTestData = resultDendrogram?.data;
+
       setContainers((prev) => [
         ...prev,
-
         <Container colSpan="col-span-2">
           <TreeMapChart data={treeTestData} />
         </Container>,
@@ -61,12 +82,87 @@ const Index = () => {
         </Container>,
       ]);
     } else {
-      setContainers((prev) => [...prev, <Container prompt={userPrompt} />]);
+      setContainers((prev) => [...prev, <Container prompt={prompt} />]);
     }
-    setUserPrompt(() => "");
 
     setUserPrompt(() => "");
   };
+
+  useEffect(() => {
+    if ("webkitSpeechRecognition" in window) {
+      const recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = true;
+      recognition.lang = "en-US";
+
+      recognition.onstart = () => {
+        setIsListening(true);
+      };
+
+      recognition.onend = () => {
+        setIsListening(false);
+      };
+
+      recognition.onerror = (event) => {
+        console.error("Speech recognition error:", event.error);
+        setIsListening(false);
+      };
+
+      recognition.onresult = (event) => {
+        let interimTranscript = "";
+        let finalTranscript = "";
+
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          const result = event.results[i];
+          if (result.isFinal) {
+            finalTranscript += result[0].transcript;
+          } else {
+            interimTranscript += result[0].transcript;
+          }
+        }
+        console.log("Final Transcript:", finalTranscript);
+
+        // Zeige auch Zwischenstand in der Suchleiste
+        setUserPrompt(finalTranscript);
+        
+
+        if (finalTranscript) {
+          setTimeout(() => 
+            handleGenerateVisualization({ preventDefault: () => {} } as React.FormEvent, finalTranscript), 1500);
+        }
+      };
+
+      recognitionRef.current = recognition;
+    }
+  }, []);
+  
+
+  const startVoiceRecognition = () => {
+    if (recognitionRef.current) {
+      if (!isListening) {
+        recognitionRef.current.start();
+      } else {
+        recognitionRef.current.stop();
+      }
+    }
+  };
+  ////////////////////
+
+  async function apiRequest(prompt: string) {
+    const response = await fetch("http://localhost:8000/api/generate-chart", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userPrompt: prompt }),
+    });
+    console.log(response);
+    if (!response.ok) {
+      console.log("Error");
+    } else {
+      const data = await response.json();
+      console.log(data);
+      return data;
+    }
+  }
 
   const listContainer = containers.map((container) => container);
 
@@ -110,6 +206,15 @@ const Index = () => {
                 onChange={(e) => setUserPrompt(e.target.value)}
                 className="flex-grow border-gray-200 focus:border-traderepublic-purple"
               />
+              <Button
+                type="button"
+                onClick={startVoiceRecognition}
+                className={`bg-gray-200 hover:bg-gray-300 ${
+                  isListening ? "animate-pulse" : ""
+                }`}
+              >
+                <Mic className="h-5 w-5 text-gray-500" />
+              </Button>
               <Button
                 type="submit"
                 className="bg-traderepublic-purple hover:bg-traderepublic-darkpurple"
