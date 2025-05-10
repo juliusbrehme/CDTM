@@ -58,26 +58,12 @@ export default class RadarChartContainer extends PureComponent<RadarChartProps> 
     const data = this.props.data || data2;
     return (
     <div className="bg-white rounded-xl p-6 animate-fade-in">
-      <div className="flex justify-between items-start mb-4">
-        <div>
-          <h3 className="text-lg text-gray-500">Radar Chart</h3>
-          <p className="text-3xl font-bold">
-            
-          </p>
-          <div
-            className={`flex items-center mt-1 ${true ? "text-traderepublic-green" : "text-traderepublic-red"}`}
-          >
-            <span className="font-medium">
-              
-            </span>
-            <span className="ml-2">
-              
-            </span>
-          </div>
-        </div>
-      </div>
+      <h3 className="text-lg text-gray-700 font-bold">
+        Radar Chart
+      </h3>
+      <p className="text-gray-500">One of the simplest ways to indetify bottlenecks</p>
 
-      <div className="h-64 mt-6">
+      <div className="h-96">
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
           <PolarGrid />

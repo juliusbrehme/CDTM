@@ -282,8 +282,10 @@ export default class TreeMapChart extends PureComponent<TreeMapChartProps> {
       <div className="bg-white rounded-xl p-6 animate-fade-in relative">
         <div className="flex justify-between items-start mb-4">
           <div>
-            <h3 className="text-lg text-gray-500">TreeMap Chart</h3>
-            <p className="text-3xl font-bold"></p>
+          <h3 className="text-lg text-gray-700 font-bold">
+            Smart Tree Graph
+          </h3>
+          <p className="text-gray-500">Analyze the dimensions of your spendings</p>
             <div
               className={`flex items-center mt-1 ${true ? "text-traderepublic-green" : "text-traderepublic-red"}`}
             >

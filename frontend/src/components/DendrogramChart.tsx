@@ -25,7 +25,7 @@ export type TreeNode = {
   export const dataT: Tree = {
     id: "a0",
     type: "node",
-    name: "APRIL 25",
+    name: "04/2025",
     value: 234,
     color: '#F8C12D',
     children: [
@@ -157,12 +157,18 @@ export const Dendrogram = ({ width = 600, height= 550, data = dataT, id}: Dendro
     if (!node.parent) {
       return;
     }
+
+    const strokeWidth = Math.max(1, node.data.value / 40); // Adjust the divisor (10) to scale the thickness
+
+
     return (
       <g key={node.data.id}>
       <path
         key={node.id}
         fill="none"
         stroke="grey"
+        strokeWidth={strokeWidth}
+        
         d={horizontalLinkGenerator({
           source: [node.parent.y, node.parent.x],
           target: [node.y, node.x],
@@ -175,7 +181,8 @@ export const Dendrogram = ({ width = 600, height= 550, data = dataT, id}: Dendro
           fontSize={12}
           textAnchor="middle"
           alignmentBaseline="middle"
-          fill="grey">
+          fill="black"
+          fontWeight={500}>
           {node.data.value}$
         </text>
       )}
@@ -192,7 +199,10 @@ export const Dendrogram = ({ width = 600, height= 550, data = dataT, id}: Dendro
   return (
     
     <div className="mb-4 w-full p-6 items-center relative overflow-scroll animate-fade-in mx-auto"> 
-          <h3 className="text-lg text-gray-500">Dendogram Chart</h3>
+            <h3 className="text-lg text-gray-700 font-bold">
+              Dynamic Mindmap
+            </h3>
+            <p className="text-gray-500">Get deep insights to your data</p>
         
 
             <svg className="p-15" width={width} height={height}>   
