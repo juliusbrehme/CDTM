@@ -57,13 +57,16 @@ const RecentTransactions = () => {
                 </Typography>
               </div>): 
               (<div>
-                <h3 className="text-lg text-gray-500 mb-4">Recent Transactions</h3>
+                <h3 className="text-lg text-gray-700 font-bold">
+        Recent Transactions
+      </h3>
+      <p className="text-gray-500 pb-10">Search for in detail information</p>
 
 <div className="space-y-4">
   {transactions.map((transaction, index) => (
     <div
       key={index}
-      className="flex justify-between items-center p-3 hover:bg-gray-50 rounded-lg transition-colors"
+      className="flex justify-between items-center p-3 bg-gray-50 rounded-lg transition-colors"
     >
       <div className="flex items-center">
         <div
@@ -73,7 +76,7 @@ const RecentTransactions = () => {
               : "bg-red-100 text-red-700"
           }`}
         >
-          {transaction.currency?.[0] ?? "?"}
+          $
         </div>
         <div className="ml-3">
           <div className="font-medium">{transaction.type}</div>
@@ -89,7 +92,7 @@ const RecentTransactions = () => {
               : "text-green-600"
           }`}
         >
-          {transaction.side === "debit" ? "-" : "+"}€
+          {transaction.side === "debit" ? "-" : "+"}$
           {parseFloat(transaction.amount).toFixed(2)}
         </div>
 
