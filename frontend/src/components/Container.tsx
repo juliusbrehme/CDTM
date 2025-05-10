@@ -1,8 +1,12 @@
 import { Button } from "@/components/ui/button.tsx";
 import { X } from "lucide-react";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
-export default function Container() {
+interface Props {
+  children: ReactNode;
+}
+
+export default function Container({ children }: Props) {
   const [showContainer, setShowContainer] = useState(true);
 
   return (
@@ -16,8 +20,8 @@ export default function Container() {
         >
           <X className="h-4 w-4 text-gray-700" />
         </Button>
-        <div className="bg-white rounded-xl shadow-sm p-6 animate-fade-in">
-          <div className="flex justify-between items-start mb-4"></div>
+        <div className="bg-white rounded-xl shadow-sm p-6 animate-fade-in h-96 overflow-auto">
+          {children}
         </div>
       </div>
     )

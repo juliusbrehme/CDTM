@@ -2,34 +2,37 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
-import PortfolioChart from "@/components/PortfolioChart";
-import AccountBalance from "@/components/AccountBalance";
-import AssetDistribution from "@/components/AssetDistribution";
-import RecentTransactions from "@/components/RecentTransactions";
-import { BarChart, Wallet, PieChart, Bell, X } from "lucide-react";
+import { PieChart, Bell } from "lucide-react";
 import Container from "@/components/Container.tsx";
+import React from "react";
+import PortfolioChart from "@/components/PortfolioChart.tsx";
+import RecentTransactions from "@/components/RecentTransactions.tsx";
+import AssetDistribution from "@/components/AssetDistribution.tsx";
 
 const Index = () => {
   const [userPrompt, setUserPrompt] = useState("");
-  const [showPortfolioChart, setShowPortfolioChart] = useState(true);
-  const [showAssetDistribution, setShowAssetDistribution] = useState(true);
-  const [showRecentTransactions, setShowRecentTransactions] = useState(true);
+
+  const [containers, setContainers] = useState<React.ReactNode[]>([
+    <Container>
+      <PortfolioChart />
+    </Container>,
+    <Container>
+      <RecentTransactions />
+    </Container>,
+  ]);
 
   const handleGenerateVisualization = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would handle the user prompt to generate a visualization
-    console.log("Generating visualization based on:", userPrompt);
-    // Reset the input after submission
-    setUserPrompt("");  
-    const response = await fetch("http://localhost:8000/api/generate-chart", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userPrompt }),
-    });
-  
-    const data = await response.json();
-    //setChartSpec(data); // Set state with Vega/Recharts spec or chart data
+    setUserPrompt(() => "");
+    setContainers((prev) => [
+      ...prev,
+      <Container>
+        <div>Hello World</div>
+      </Container>,
+    ]);
   };
+
+  const listContainer = containers.map((container) => container);
 
   return (
     <div className="min-h-screen bg-traderepublic-gray flex flex-col">
@@ -61,7 +64,6 @@ const Index = () => {
               </Button>
             </div>
           </div>
-
           {/* User Input for Visualization */}
           <form onSubmit={handleGenerateVisualization} className="mb-6">
             <div className="flex gap-2">
@@ -80,94 +82,14 @@ const Index = () => {
               </Button>
             </div>
           </form>
-          <Container />
-
-          {/*Dashboard Content*/}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Portfolio Chart (2/3 width on large screens) */}
-            {showPortfolioChart && (
-              <div className="lg:col-span-2 relative">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="absolute right-2 top-2 z-10 h-8 w-8 bg-white/80 hover:bg-gray-100"
-                  onClick={() => setShowPortfolioChart(false)}
-                >
-                  <X className="h-4 w-4 text-gray-700" />
-                </Button>
-                <PortfolioChart />
-              </div>
-            )}
-
-            {/* Account Balance (1/3 width on large screens) */}
-            <div>
-              <AccountBalance />
+          <div>
+            <div
+              className={`mb-6 grid gap-4 ${listContainer.length !== 1 ? "grid-cols-2" : "grid-cols-1"}`}
+            >
+              {listContainer.map((container, index) => (
+                <React.Fragment>{container}</React.Fragment>
+              ))}
             </div>
-
-            {/* Asset Distribution (1/3 width on large screens) */}
-            {showAssetDistribution && (
-              <div className="relative">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="absolute right-2 top-2 z-10 h-8 w-8 bg-white/80 hover:bg-gray-100"
-                  onClick={() => setShowAssetDistribution(false)}
-                >
-                  <X className="h-4 w-4 text-gray-700" />
-                </Button>
-                <AssetDistribution />
-              </div>
-            )}
-
-            {/* Recent Transactions (2/3 width on large screens) */}
-            {showRecentTransactions && (
-              <div className="lg:col-span-2 relative">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="absolute right-2 top-2 z-10 h-8 w-8 bg-white/80 hover:bg-gray-100"
-                  onClick={() => setShowRecentTransactions(false)}
-                >
-                  <X className="h-4 w-4 text-gray-700" />
-                </Button>
-                <RecentTransactions />
-              </div>
-            )}
-          </div>
-
-          {/* Quick Actions */}
-          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <Button
-              variant="outline"
-              className="p-4 h-auto flex flex-col items-center justify-center border-gray-200 hover:border-traderepublic-purple hover:bg-white"
-            >
-              <Wallet className="h-6 w-6 text-traderepublic-purple mb-2" />
-              <span className="text-sm text-gray-700">Manage Payment</span>
-            </Button>
-
-            <Button
-              variant="outline"
-              className="p-4 h-auto flex flex-col items-center justify-center border-gray-200 hover:border-traderepublic-purple hover:bg-white"
-            >
-              <BarChart className="h-6 w-6 text-traderepublic-purple mb-2" />
-              <span className="text-sm text-gray-700">Performance</span>
-            </Button>
-
-            <Button
-              variant="outline"
-              className="p-4 h-auto flex flex-col items-center justify-center border-gray-200 hover:border-traderepublic-purple hover:bg-white"
-            >
-              <PieChart className="h-6 w-6 text-traderepublic-purple mb-2" />
-              <span className="text-sm text-gray-700">Portfolio</span>
-            </Button>
-
-            <Button
-              variant="outline"
-              className="p-4 h-auto flex flex-col items-center justify-center border-gray-200 hover:border-traderepublic-purple hover:bg-white"
-            >
-              <Bell className="h-6 w-6 text-traderepublic-purple mb-2" />
-              <span className="text-sm text-gray-700">Alerts</span>
-            </Button>
           </div>
         </div>
       </main>
