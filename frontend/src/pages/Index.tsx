@@ -7,7 +7,7 @@ import Container from "@/components/Container.tsx";
 import React from "react";
 import PortfolioChart from "@/components/PortfolioChart.tsx";
 import RecentTransactions from "@/components/RecentTransactions.tsx";
-import AssetDistribution from "@/components/AssetDistribution.tsx";
+import VegaChart from "@/components/VegaChart.tsx";
 
 const Index = () => {
   const [userPrompt, setUserPrompt] = useState("");
@@ -18,6 +18,9 @@ const Index = () => {
     </Container>,
     <Container>
       <RecentTransactions />
+    </Container>,
+    <Container>
+      <VegaChart />
     </Container>,
   ]);
 
