@@ -161,7 +161,7 @@ Type is the type of transaction, options are CARD(Use of the TR Debit Card), CAR
 Category is the category of spending given as strings. 
 Make sure the chart spec filters by the correct time range given in the query. And make the graph interactable and colorful and include a title
 The options for spending categories are: Health, Pet food & Veterinary, Restaurants, Groceries, Agriculture, Miscellaneous, Travel & Transportation, Services, Leisure & Entertainment, IT & Electronics, Retail, Education & Books, Finance & Insurance
-Respond ONLY with valid Vega-Lite JSON and start with the curly bracket. No explanation and make sure it's JSON parseable. Don't sort by date if none is given in the chart spec
+Respond ONLY with valid Vega-Lite JSON and start with the curly bracket. No explanation and make sure it's JSON parseable. DEFINITLY DON'T sort by date if none is given in the chart spec
 
 User prompt: "{prompt.userPrompt}"
     """

@@ -14,6 +14,7 @@ import RadarJSON from "@/data/test_radar.json";
 import TreeJSON from "@/data/test_tree.json";
 import DendrogramJSON from "@/data/test_dendogram.json";
 import SankeyChart from "@/components/SankeyChart";
+import { create } from "domain";
 
 declare global {
   interface Window {
@@ -29,6 +30,7 @@ const Index = () => {
   const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef<InstanceType<typeof SpeechRecognition> | null>(null);
   const [dendrogramCounter, setDendrogramCounter] = useState(0);
+  const [selectedFeature, setSelectedFeature] = useState("Mind-Map Feature"); // State für die Dropdown-Auswahl
 
   const [containers, setContainers] = useState<React.ReactNode[]>([
     <Container colSpan="col-span-1">
@@ -38,6 +40,11 @@ const Index = () => {
       <RecentTransactions />
     </Container>,
   ]);
+
+  const handleFeatureChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedFeature(e.target.value); // Aktualisiert den State mit der ausgewählten Option
+  };
+
 
   const createDendrogram = () => {
     const newContainer = (
@@ -116,6 +123,10 @@ const Index = () => {
       setContainers((prev) => [...prev, <Container colSpan="col-span-1">
         <SankeyChart />
       </Container>])
+    } else if (selectedFeature === "Explorative Feature") {
+      setContainers((prev) => [ ...prev, <Container prompt={userPrompt} />]);
+    } else if (selectedFeature === "Mind-Map Feature") {
+      createDendrogram();
     } else {
       setContainers((prev) => [ ...prev, <Container prompt={userPrompt} />]);
       createDendrogram();
@@ -233,19 +244,29 @@ const Index = () => {
             </div>
           </div>
 
-          {/* User Input for Visualization */}
-          <form onSubmit={handleGenerateVisualization} className="mb-6">
-            <div className="flex gap-2">
+            {/* User Input for Visualization */}
+            <form onSubmit={handleGenerateVisualization} className="mb-6">
+            <div className="flex gap-0 items-center">
+              <select
+              className="bg-gray-200 border-gray-200 rounded-l-md px-3 py-2 text-gray-600 text-sm"
+              defaultValue="Mind-Map Feature"
+              value={selectedFeature} // Bindet den State an das Dropdown
+              onChange={handleFeatureChange} // Handler für Änderungen
+              >
+              <option value="Explorative Feature">Explorative Feature</option>
+              <option value="Mind-Map Feature">Mind-Map Feature</option>
+              <option value="Combination Feature">Combination Feature</option>
+              </select>
               <Input
-                placeholder="Enter a prompt to generate visualization (e.g. 'Give me an overview of my spendings on food this month')"
-                value={userPrompt}
-                onChange={(e) => setUserPrompt(e.target.value)}
-                className="flex-grow border-gray-200 focus:border-traderepublic-purple"
+              placeholder="Enter a prompt to generate visualization (e.g. 'Give me an overview of my spendings on food this month')"
+              value={userPrompt}
+              onChange={(e) => setUserPrompt(e.target.value)}
+              className="flex-grow border-gray-200 rounded-none"
               />
               <Button
                 type="button"
                 onClick={startVoiceRecognition}
-                className={`bg-gray-200 hover:bg-gray-300 ${
+                className={`bg-gray-200 hover:bg-gray-300 rounded-l-none ${
                   isListening ? "animate-pulse" : ""
                 }`}
               >
