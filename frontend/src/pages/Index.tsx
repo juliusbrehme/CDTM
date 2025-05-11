@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
-import { Bell, PieChart, Mic } from "lucide-react";
+import { Bell, PieChart, Mic, Target } from "lucide-react";
 import Container from "@/components/Container.tsx";
 import PortfolioChart from "@/components/PortfolioChart.tsx";
 import RecentTransactions from "@/components/RecentTransactions.tsx";
@@ -30,7 +30,6 @@ const Index = () => {
   const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef<InstanceType<typeof SpeechRecognition> | null>(null);
   const [dendrogramCounter, setDendrogramCounter] = useState(0);
-  const [selectedFeature, setSelectedFeature] = useState("Mind-Map Feature"); // State für die Dropdown-Auswahl
 
   const [containers, setContainers] = useState<React.ReactNode[]>([
     <Container colSpan="col-span-1">
@@ -41,12 +40,9 @@ const Index = () => {
     </Container>,
   ]);
 
-  const handleFeatureChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedFeature(e.target.value); // Aktualisiert den State mit der ausgewählten Option
-  };
 
-
-  const createDendrogram = () => {
+  const createDendrogram = (prompt: string) => {
+    
     const newContainer = (
       <Container>
         
@@ -58,7 +54,7 @@ const Index = () => {
     fetch("http://localhost:8000/api/generate-chart-json", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userPrompt: userPrompt }),
+      body: JSON.stringify({ userPrompt: prompt }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -88,10 +84,12 @@ const Index = () => {
   const handleGenerateVisualization = (e: React.FormEvent, inputPrompt?:string) => {
     e.preventDefault();
     let prompt = userPrompt
+
+    const selectedOption = (document.getElementById("select-option") as HTMLSelectElement)?.value;
+
     if(inputPrompt) {
       prompt = inputPrompt;
     }
-
     const normalizeString = (str: string) => {
       return str.trim().toLowerCase().replace(/[.,!?]$/, ""); // Entfernt Satzzeichen am Ende und macht den String klein
     };
@@ -123,13 +121,13 @@ const Index = () => {
       setContainers((prev) => [...prev, <Container colSpan="col-span-1">
         <SankeyChart />
       </Container>])
-    } else if (selectedFeature === "Explorative Feature") {
-      setContainers((prev) => [ ...prev, <Container prompt={userPrompt} />]);
-    } else if (selectedFeature === "Mind-Map Feature") {
-      createDendrogram();
+    } else if (selectedOption === "Explorative Feature") {
+      setContainers((prev) => [ ...prev, <Container prompt={prompt} />]);
+    } else if (selectedOption === "Mind-Map Feature") {
+      createDendrogram(prompt);
     } else {
-      setContainers((prev) => [ ...prev, <Container prompt={userPrompt} />]);
-      createDendrogram();
+      createDendrogram(prompt);
+      setContainers((prev) => [ ...prev, <Container prompt={prompt} />]);
     }
 
     setUserPrompt(() => "");
@@ -167,7 +165,6 @@ const Index = () => {
             interimTranscript += result[0].transcript;
           }
         }
-        console.log("Final Transcript:", finalTranscript);
 
         // Zeige auch Zwischenstand in der Suchleiste
         setUserPrompt(finalTranscript);
@@ -247,11 +244,10 @@ const Index = () => {
             {/* User Input for Visualization */}
             <form onSubmit={handleGenerateVisualization} className="mb-6">
             <div className="flex gap-0 items-center">
-              <select
+              <select 
+              id="select-option"
               className="bg-gray-200 border-gray-200 rounded-l-md px-3 py-2 text-gray-600 text-sm"
               defaultValue="Mind-Map Feature"
-              value={selectedFeature} // Bindet den State an das Dropdown
-              onChange={handleFeatureChange} // Handler für Änderungen
               >
               <option value="Explorative Feature">Explorative Feature</option>
               <option value="Mind-Map Feature">Mind-Map Feature</option>
