@@ -65,7 +65,7 @@ const Index = () => {
         setContainers((prev) =>
       prev.map((container) =>
         container === newContainer ? (
-          <Container>
+          <Container >
             <Dendrogram data={data} id={`dendrogram-${dendrogramCounter}`}/>
           </Container>
         ) : (
