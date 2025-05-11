@@ -49,12 +49,14 @@ export default function Container({ children, prompt, colSpan="col-span-1" }: Pr
           </Button>
           <div className="w-full min-h-[30rem] bg-white rounded-xl shadow-sm p-6 animate-fade-in overflow-auto">
             {graph ? ( 
-            <div>
-                <h3 className="text-lg text-gray-700 font-bold">
-                  Custom GenAI Chart
-                </h3>
-                <p className="text-gray-500 pb-10">Dynamically tailored to your needs</p>
-              {graph}
+            <div className="w-full">
+              <h3 className="text-lg text-gray-700 font-bold">
+                Custom GenAI Chart
+              </h3>
+              <p className="text-gray-500 pb-10">Dynamically tailored to your needs</p>
+              <div className="w-full flex justify-center">
+                {graph}
+              </div>
             </div>
               
             ) : (
